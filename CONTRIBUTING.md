@@ -117,7 +117,8 @@ lightly-maintained extension rots. They are cheap and fail with an explanation:
   requires only `vscode` (any Node built-in would break the web extension host)
   and stays inside a size budget.
 - **Type/engine alignment** — `@types/vscode` must not be newer than
-  `engines.vscode`, which is the rule `vsce` enforces at packaging time.
+  `engines.vscode`, which is the rule `vsce` enforces at packaging time. The
+  engine floor therefore tracks the declared types, and the two move together.
 
 ## Vendored dependencies
 
@@ -159,5 +160,6 @@ access token, and a human should confirm the changelog and smoke test first.
 - Dependabot opens grouped monthly PRs for npm and GitHub Actions.
 - `npm test` is an alias for `npm run verify`, so a single command is enough
   before any commit.
-- When VS Code raises its minimum engine, bump `engines.vscode` and the
-  `@types/vscode` range together, then re-run `npm run verify`.
+- When the `@types/vscode` range is bumped (for example by Dependabot), raise
+  `engines.vscode` to the same minor in the same change, then re-run
+  `npm run verify`.

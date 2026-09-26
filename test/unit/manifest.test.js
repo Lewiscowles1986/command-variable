@@ -227,7 +227,7 @@ describe('package.json structure', () => {
     expect(
       [typesMajor, typesMinor],
       `@types/vscode ${installed} is newer than engines.vscode ${manifest.engines.vscode}. ` +
-        'Lower the @types/vscode range (for example ~1.55.0) or raise engines.vscode.'
+        'Lower the @types/vscode range (for example ~1.138.0) or raise engines.vscode.'
     ).toEqual([engineMajor, engineMinor]);
   });
 });
