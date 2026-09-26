@@ -17,6 +17,7 @@ coverage/**
 # Documentation source. Decided: docs do not ship in the .vsix (the README is
 # the Marketplace landing page and stays self-sufficient).
 docs/**
+AGENTS.md
 
 # Build and maintenance tooling
 scripts/**
