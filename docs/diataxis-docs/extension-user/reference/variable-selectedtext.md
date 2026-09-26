@@ -15,7 +15,7 @@ one cursor you can choose the separator and which selections take part.
 
 If you only have 1 selection you don't need the properties `separator` and `filterSelection`.
 
-For the [transform](#transform) command you can define the properties `separator` and `filterSelection` in the `args` property of the command.
+For the [transform](number-transform.md) command you can define the properties `separator` and `filterSelection` in the `args` property of the command.
 
 * `separator` : (Optional) the string used to join the (multi cursor) selections for `${selectedText}`, default (`"\n"`)
 * `filterSelection` : (Optional) a JavaScript expression that allows which (multi cursor) selections to use for `${selectedText}`, default (`"true"`) all are selected.<br/>The expression can use the following variables:

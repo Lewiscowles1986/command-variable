@@ -19,7 +19,7 @@ _`name`_ is the property name of the `pickStringRemember` property of the `args`
 
 Because the command has no way to determine if it is called from which workspace `tasks.json` or `launch.json` file or from a key binding the arguments for `pickStringRemember` have to be part of the arguments of the command.
 
-See the command [`extension.commandvariable.pickStringRemember`](#pickstringremember) for the arguments you can use.
+See the command [`extension.commandvariable.pickStringRemember`](select-remember-commands.md) for the arguments you can use.
 
 An example shows faster how it is to be used compared to a lot of text.
 
@@ -54,11 +54,11 @@ An example shows faster how it is to be used compared to a lot of text.
 
 ### Variable `promptStringRemember`
 
-The `promptStringRemember` variable works the same as the [`pickStringRemember` variable](#variable-pickstringremember).
+The `promptStringRemember` variable works the same as the [`pickStringRemember` variable](variable-pickstringremember.md).
 If you want to add an entry you type on the keyboard use the variable: <code>&dollar;{promptStringRemember:<em>name</em>}</code>
 
 _`name`_ is the property name of the `promptStringRemember` property of the `args` object of the command.
 
 Because the command has no way to determine if it is called from which workspace `tasks.json` or `launch.json` file or from a key binding the arguments for `promptStringRemember` have to be part of the arguments of the command.
 
-See the command [`extension.commandvariable.promptStringRemember`](#promptstringremember) for the arguments you can use.
+See the command [`extension.commandvariable.promptStringRemember`](select-remember-commands.md) for the arguments you can use.

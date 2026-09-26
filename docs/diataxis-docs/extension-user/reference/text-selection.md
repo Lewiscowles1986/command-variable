@@ -13,12 +13,12 @@ working in. They combine text from more than one cursor.
 
 ## Catalogue
 
-* `extension.commandvariable.selectedText` : (**Web**) The selected text in the active editor, empty string if nothing selected. Supports [multicursor](#multicursor-and-text).
+* `extension.commandvariable.selectedText` : (**Web**) The selected text in the active editor, empty string if nothing selected. Supports [multicursor](text-selection.md).
 * `extension.commandvariable.selectionStartLineNumber` : (**Web**) Line number of the selection start
 * `extension.commandvariable.selectionStartColumnNumber` : (**Web**) Column number of the selection start
 * `extension.commandvariable.selectionEndLineNumber` : (**Web**) Line number of the selection end
 * `extension.commandvariable.selectionEndColumnNumber` : (**Web**) Column number of the selection end
-* `extension.commandvariable.currentLineText` : (**Web**) The text of the line in the active editor where the selection starts or where the cursor is. Supports [multicursor](#multicursor-and-text).
+* `extension.commandvariable.currentLineText` : (**Web**) The text of the line in the active editor where the selection starts or where the cursor is. Supports [multicursor](text-selection.md).
 
 ## Multicursor behaviour
 

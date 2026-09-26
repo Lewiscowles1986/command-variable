@@ -17,10 +17,10 @@ If you have a JSON file and you want the value for a given property you can use 
 
 The supported arguments:
 
-* `fileName` : specifies the file to read, see [File Content](#file-content).
-* `json` : specifies a JavaScript expression that gets the property you want from the variable `content`. The variable `content` is the parsed JSON file. The JavaScript expression can contain [variables](#variables) like `${remember:foobar}`
+* `fileName` : specifies the file to read, see [File Content](file-content.md).
+* `json` : specifies a JavaScript expression that gets the property you want from the variable `content`. The variable `content` is the parsed JSON file. The JavaScript expression can contain [variables](variables.md) like `${remember:foobar}`
 * `default` : (Optional) If the JavaScript expression fails and you have defined `default` that string is returned else `"Unknown"` is returned.
-* `keyRemember` : (Optional) If you want to [remember](#remember) the value for later use. (default: `"fileContent"`)
+* `keyRemember` : (Optional) If you want to [remember](remember.md) the value for later use. (default: `"fileContent"`)
 * `debug` : (Optional) [ `true` | `false` ] Show debug log messages in **Developer Tools Console**. (default: `false`)
 
 The JSON file can be an array and you can address the elements with: `content[3]`
@@ -40,7 +40,7 @@ The JSON file can contain comments and trailing commas
 }
 ```
 
-Can be used as [variable](#variables) <code>&dollar;{fileContent:<em>name</em>}</code>
+Can be used as [variable](variables.md) <code>&dollar;{fileContent:<em>name</em>}</code>
 
 ### Example
 
@@ -96,15 +96,15 @@ If you have a YAML file and you want the value for a given property you can use 
 
 The supported arguments:
 
-* `fileName` : specifies the file to read, see [File Content](#file-content).
-* `yaml` : specifies a JavaScript expression that gets the property you want from the variable `content`. The variable `content` is the parsed YAML file. The JavaScript expression can contain [variables](#variables) like `${remember:foobar}`
+* `fileName` : specifies the file to read, see [File Content](file-content.md).
+* `yaml` : specifies a JavaScript expression that gets the property you want from the variable `content`. The variable `content` is the parsed YAML file. The JavaScript expression can contain [variables](variables.md) like `${remember:foobar}`
 * `default` : (Optional) If the JavaScript expression fails and you have defined `default` that string is returned else `"Unknown"` is returned.
-* `keyRemember` : (Optional) If you want to [remember](#remember) the value for later use. (default: `"fileContent"`)
+* `keyRemember` : (Optional) If you want to [remember](remember.md) the value for later use. (default: `"fileContent"`)
 * `debug` : (Optional) [ `true` | `false` ] Show debug log messages in **Developer Tools Console**. (default: `false`)
 
-Can be used as [variable](#variables) <code>&dollar;{fileContent:<em>name</em>}</code>
+Can be used as [variable](variables.md) <code>&dollar;{fileContent:<em>name</em>}</code>
 
-See [File Content JSON Property](#file-content-json-property) for examples.
+See [File Content JSON Property](file-content.md) for examples.
 
 If the file contains multiple key-values or properties you want in your task or launch you can remember the picked file and use the same path in another `extension.commandvariable.file.content` use.
 

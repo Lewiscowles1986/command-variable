@@ -48,13 +48,13 @@ If the command does not use arguments you place the commandID directly in the va
 
 #### Named Arguments
 
-If the command uses arguments you have to put these in the arguments of the parent command in the property `command`. (Just like with the [<code>&dollar;{pickStringRemember:<em>name</em>}</code> variable](#variable-pickstringremember))
+If the command uses arguments you have to put these in the arguments of the parent command in the property `command`. (Just like with the [<code>&dollar;{pickStringRemember:<em>name</em>}</code> variable](variable-pickstringremember.md))
 
 The named arguments have the following properties:
 
-* `command` : the commandID to execute, can contain variables (see example [Construct commandID](#construct-commandid))
+* `command` : the commandID to execute, can contain variables (see example [Construct commandID](variable-command-transform-remember.md#construct-commandid))
 * `args` : the arguments for this commandID
-* `variableSubstArgs` : if `true`, [variables](#variables) will be expanded within the `args` prior to the command being executed (default: `false`)
+* `variableSubstArgs` : if `true`, [variables](variables.md) will be expanded within the `args` prior to the command being executed (default: `false`)
 
 ```json
 {
@@ -90,7 +90,7 @@ The named arguments have the following properties:
 
 Next feature and example by Thomas Moore ([issue 50](https://github.com/rioj7/command-variable/issues/50))
 
-The following example shows how the `variableSubstArgs` option can be used to expand variables in a command used as a named argument. In this case, the [<code>&dollar;{pickStringRemember:pickAnOption}</code>](#variable-pickstringremember) variable is expanded prior to the argument being passed to the `shellCommand.execute` command (provided by the [Tasks Shell Input](https://marketplace.visualstudio.com/items?itemName=augustocdias.tasks-shell-input) extension).
+The following example shows how the `variableSubstArgs` option can be used to expand variables in a command used as a named argument. In this case, the [<code>&dollar;{pickStringRemember:pickAnOption}</code>](variable-pickstringremember.md) variable is expanded prior to the argument being passed to the `shellCommand.execute` command (provided by the [Tasks Shell Input](https://marketplace.visualstudio.com/items?itemName=augustocdias.tasks-shell-input) extension).
 
 ```json
 {

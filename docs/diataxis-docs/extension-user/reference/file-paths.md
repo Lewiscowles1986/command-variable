@@ -45,18 +45,18 @@ one to five directory levels up, and an optional `Posix` suffix for a path with
 * `extension.commandvariable.file.relativeFileDirname4UpPosix` : The same result as `${extension.commandvariable.file.relativeFileDirname4Up}` but in Posix form.
 * `extension.commandvariable.file.relativeFileDirname5UpPosix` : The same result as `${extension.commandvariable.file.relativeFileDirname5Up}` but in Posix form.
 * `extension.commandvariable.file.relativeFilePosix` : The same result as `${relativeFile}` but in Posix form.
-* `extension.commandvariable.file.fileAsKey` : Use part of the file path as a key in a map lookup. Can be used in `lauch.json` to select arguments based on filename, see [example](#fileaskey).
+* `extension.commandvariable.file.fileAsKey` : Use part of the file path as a key in a map lookup. Can be used in `lauch.json` to select arguments based on filename, see [example](file-paths.md).
 * `extension.commandvariable.file.fileDirBasename` : (**Web**) The basename of the `${fileDirname}`
 * `extension.commandvariable.file.fileDirBasename1Up` : (**Web**) The directory name 1 Up of `${fileDirname}`
 * `extension.commandvariable.file.fileDirBasename2Up` : (**Web**) The directory name 2 Up of `${fileDirname}`
 * `extension.commandvariable.file.fileDirBasename3Up` : (**Web**) The directory name 3 Up of `${fileDirname}`
 * `extension.commandvariable.file.fileDirBasename4Up` : (**Web**) The directory name 4 Up of `${fileDirname}`
 * `extension.commandvariable.file.fileDirBasename5Up` : (**Web**) The directory name 5 Up of `${fileDirname}`
-* `extension.commandvariable.file.content` : The content of the given file name. Use "inputs", see [example](#file-content). Or the value of a Key-Value pair, see [example](#file-content-key-value-pairs). Or the value of a JSON file property, see [example](#file-content-json-property).
+* `extension.commandvariable.file.content` : The content of the given file name. Use "inputs", see [example](file-content.md). Or the value of a Key-Value pair, see [example](file-content.md). Or the value of a JSON file property, see [example](file-content.md).
 
 ## Workspace folder commands
 
-* `extension.commandvariable.workspace.folder` : The path of the workspace root directory of the current file. `${workspaceFolder}` does not give this path in Multi Root workspaces. You can target a particular workspace by [supplying a `name` in the arguments](#workspace-name-in-argument).
+* `extension.commandvariable.workspace.folder` : The path of the workspace root directory of the current file. `${workspaceFolder}` does not give this path in Multi Root workspaces. You can target a particular workspace by [supplying a `name` in the arguments](file-paths.md#target-a-specific-workspace-folder).
 
 ## Target a specific workspace folder
 

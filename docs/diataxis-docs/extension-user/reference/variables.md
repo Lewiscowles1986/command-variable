@@ -17,11 +17,11 @@ arguments.
 
 Many strings of commands support variables.
 
-If the variable substitution is done with a [`pickFile:transform`](#pick-file) or [`remember:transform`](#remember) of a picked file, command or variable, the text "**current opened file**" should be replaced with "**picked file**".
+If the variable substitution is done with a [`pickFile:transform`](dialogs.md) or [`remember:transform`](remember.md) of a picked file, command or variable, the text "**current opened file**" should be replaced with "**picked file**".
 
 VSC does not perform [variable substitution](https://code.visualstudio.com/docs/editor/variables-reference) in the strings of the `inputs` fields, so currently only a selection of variables is replicated here:
 
-* `${selectedText}` : a joined string constructed from the (multi cursor) selections.<br/>You can [overide the used properties by embedding them in the variable](#variable-selectedtext)
+* `${selectedText}` : a joined string constructed from the (multi cursor) selections.<br/>You can [overide the used properties by embedding them in the variable](variable-selectedtext.md)
 * <code>&dollar;{env:<em>name</em>}</code> : get the value for environment variable <code><em>name</em></code>
 * <code>&dollar;{pathSeparator}</code> : the character used by the operating system to separate components in file paths
 * <code>&dollar;{userHome}</code> : the path of the user's home folder
@@ -36,39 +36,39 @@ VSC does not perform [variable substitution](https://code.visualstudio.com/docs/
 * `${fileBasenameNoExtension}` : the current opened file's basename with no file extension
 * `${fileExtname}` : the current opened file's extension
 * `${fileDirname}` : the current opened file's dirname
-* <code>&dollar;{pickStringRemember:<em>name</em>}</code> : use the [`pickStringRemember`](#pickstringremember) command as a variable, arguments are part of the [`pickStringRemember` property of the (parent) command](#variable-pickstringremember)
-* <code>&dollar;{promptStringRemember:<em>name</em>}</code> : use the [`promptStringRemember`](#promptstringremember) command as a variable, arguments are part of the [`promptStringRemember` property of the (parent) command](#variable-promptstringremember)
-* <code>&dollar;{remember:<em>key</em>}</code> : use the [remember](#remember) command as a variable,  
+* <code>&dollar;{pickStringRemember:<em>name</em>}</code> : use the [`pickStringRemember`](select-remember-commands.md) command as a variable, arguments are part of the [`pickStringRemember` property of the (parent) command](variable-pickstringremember.md)
+* <code>&dollar;{promptStringRemember:<em>name</em>}</code> : use the [`promptStringRemember`](select-remember-commands.md) command as a variable, arguments are part of the [`promptStringRemember` property of the (parent) command](variable-pickstringremember.md)
+* <code>&dollar;{remember:<em>key</em>}</code> : use the [remember](remember.md) command as a variable,  
   _`key`_ is first tested as a _named argument object property_ (like `pickStringRemember`), arguments are part of the `remember` property of the (parent) command.  
-  If not found and _`key`_ has the format <code>number-<em>name</em></code> the _name_ is used to get the last value of a named [number](#number).  
+  If not found and _`key`_ has the format <code>number-<em>name</em></code> the _name_ is used to get the last value of a named [number](number-transform.md).  
   If not found _`key`_ is a key in the remeber store. _`key`_ matches:
     * `key` argument of the `pickStringRemember` or `promptStringRemember` variable/command
     * `keyRemember` argument of the `pickFile` or `fileContent` variable/command
     * or a key used in storing multiple values in the `remember` command.
 
-  You can add the [`checkEscapedUI`](#checkescapedui) property to the _`key`_ name if it is not a _named argument object_ like <code>&dollar;{remember:<em>key</em>__checkEscapedUI}</code>.  
-  See a few [examples of the `${remember}` variable](#variable-remember).
-* <code>&dollar;{pickFile:<em>name</em>}</code> : use the [`pickFile`](#pick-file) command as a variable, arguments are part of the [`pickFile` property of the (parent) command](#variable-pickfile)
-* <code>&dollar;{openDialog:<em>name</em>}</code> : use the [`openDialog`](#open-dialog) command as a variable, arguments are part of the [`openDialog` property of the (parent) command](#variable-opendialog)
-* <code>&dollar;{saveDialog:<em>name</em>}</code> : use the [`saveDialog`](#save-dialog) command as a variable, arguments are part of the [`saveDialog` property of the (parent) command](#variable-savedialog)
-* <code>&dollar;{fileContent:<em>name</em>}</code> : use the [`file.content`](#file-content) command ([File Content Key Value pairs](#file-content-key-value-pairs), [File Content JSON Property](#file-content-json-property) ) as a variable, arguments are part of the `fileContent` property of the (parent) command. (works the same as <code>&dollar;{pickStringRemember:<em>name</em>}</code>)
+  You can add the [`checkEscapedUI`](../explanation/cancelled-inputs-and-compound-tasks.md) property to the _`key`_ name if it is not a _named argument object_ like <code>&dollar;{remember:<em>key</em>__checkEscapedUI}</code>.  
+  See a few [examples of the `${remember}` variable](variable-remember.md).
+* <code>&dollar;{pickFile:<em>name</em>}</code> : use the [`pickFile`](dialogs.md) command as a variable, arguments are part of the [`pickFile` property of the (parent) command](variable-pickfile.md)
+* <code>&dollar;{openDialog:<em>name</em>}</code> : use the [`openDialog`](dialogs.md) command as a variable, arguments are part of the [`openDialog` property of the (parent) command](variable-pickfile.md)
+* <code>&dollar;{saveDialog:<em>name</em>}</code> : use the [`saveDialog`](dialogs.md) command as a variable, arguments are part of the [`saveDialog` property of the (parent) command](variable-pickfile.md)
+* <code>&dollar;{fileContent:<em>name</em>}</code> : use the [`file.content`](file-content.md) command ([File Content Key Value pairs](file-content.md), [File Content JSON Property](file-content.md) ) as a variable, arguments are part of the `fileContent` property of the (parent) command. (works the same as <code>&dollar;{pickStringRemember:<em>name</em>}</code>)
 * <code>&dollar;{config:<em>name</em>}</code> : use the variable <code>&dollar;{configExpression:<em>name</em>}</code> (!!_name_ is not the name of the config variable!!)
-* <code>&dollar;{configExpression:<em>name</em>}</code> : use the [`config.expression`](#config-expression) command as a variable, arguments are part of the `configExpression` property of the (parent) command (works the same as <code>&dollar;{pickStringRemember:<em>name</em>}</code>)
-* <code>&dollar;{jsExpression:<em>name</em>}</code> : use the [`js.expression`](#javascript-expression) command as a variable, arguments are part of the `jsExpression` property of the (parent) command (works the same as <code>&dollar;{pickStringRemember:<em>name</em>}</code>)
-* <code>&dollar;{command:<em>name</em>}</code> : use the result of a command as a variable. `name` can be a commandID or a _named argument object property_ (like `pickStringRemember`), arguments are part of the [`command` property of the (parent) command](#variable-command)
-* <code>&dollar;{transform:<em>name</em>}</code> : use the result of a transform as a variable. `name` is a _named argument object property_ (like `pickStringRemember`), arguments are part of the [`transform` property of the (parent) command](#variable-transform). You can transform strings that are the result of a transform.
+* <code>&dollar;{configExpression:<em>name</em>}</code> : use the [`config.expression`](expressions.md) command as a variable, arguments are part of the `configExpression` property of the (parent) command (works the same as <code>&dollar;{pickStringRemember:<em>name</em>}</code>)
+* <code>&dollar;{jsExpression:<em>name</em>}</code> : use the [`js.expression`](expressions.md) command as a variable, arguments are part of the `jsExpression` property of the (parent) command (works the same as <code>&dollar;{pickStringRemember:<em>name</em>}</code>)
+* <code>&dollar;{command:<em>name</em>}</code> : use the result of a command as a variable. `name` can be a commandID or a _named argument object property_ (like `pickStringRemember`), arguments are part of the [`command` property of the (parent) command](variable-command-transform-remember.md)
+* <code>&dollar;{transform:<em>name</em>}</code> : use the result of a transform as a variable. `name` is a _named argument object property_ (like `pickStringRemember`), arguments are part of the [`transform` property of the (parent) command](variable-transform.md). You can transform strings that are the result of a transform.
 * <code>&dollar;{result}</code> : a special variable used in:
-  * the [`remember:transform:text`](#remember) property. It contains the string stored for the given `key`.
-  * the [`pickFile:transform:text`](#pick-file) property. It contains the string that is the value of the picked item.
-  * the [`openDialog:transform:text`](#open-dialog) property. It contains the string that is the value of the picked item.
-  * the [`saveDialog:transform:text`](#save-dialog) property. It contains the string that is the value of the picked item.
+  * the [`remember:transform:text`](remember.md) property. It contains the string stored for the given `key`.
+  * the [`pickFile:transform:text`](dialogs.md) property. It contains the string that is the value of the picked item.
+  * the [`openDialog:transform:text`](dialogs.md) property. It contains the string that is the value of the picked item.
+  * the [`saveDialog:transform:text`](dialogs.md) property. It contains the string that is the value of the picked item.
 
   In all other cases it is the empty string.
 * <code>&dollar;{index}</code>  
   <code>&dollar;{index:<em>name</em>}</code> : a special variable used in:
-  * the [`remember:transform:text`](#remember) property.
-  * the [`pickFile:transform:text`](#pick-file) property.
-  * the [`openDialog:transform:text`](#open-dialog) property.
+  * the [`remember:transform:text`](remember.md) property.
+  * the [`pickFile:transform:text`](dialogs.md) property.
+  * the [`openDialog:transform:text`](dialogs.md) property.
 
   Or any variable that is in the `text` property.
 
@@ -109,7 +109,7 @@ The variables are processed in the order mentioned. This means that if the selec
 - [`${selectedText}`](variable-selectedtext.md)
 - [`${pickStringRemember}` and `${promptStringRemember}`](variable-pickstringremember.md)
 - [`${pickFile}`, `${openDialog}`, `${saveDialog}`](variable-pickfile.md)
-- [`${command}`](variable-command.md)
+- [`${command}`](variable-command-transform-remember.md)
 - [`${transform}`](variable-transform.md)
 - [`${remember}`](variable-remember.md)
 - [Variable filters](variable-filters.md)

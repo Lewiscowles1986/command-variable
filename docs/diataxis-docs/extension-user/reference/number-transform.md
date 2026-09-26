@@ -22,7 +22,7 @@ The command has the following configuration attributes:
 * `step` : number, if `random` is `false` the number returned is the previous value incremented with `step`, can be negative (default: `1`)
 * `uniqueCount` : number, if `random` is `true` the number returned is unique compared to the previous `uniqueCount` numbers (default: `0`)
 
-You can get the last value of a named number with the `remember` [command](#remember) or [variable](#variables).  
+You can get the last value of a named number with the `remember` [command](remember.md) or [variable](variables.md).  
 You must use a special key format: <code>number-<em>name</em></code>
 
 ### Sequence of numbers
@@ -121,17 +121,17 @@ With the command `extension.commandvariable.transform` you can find-replace with
 
 The command can be used with the `${input:}` variable and has the following arguments:
 
-* `text` : the string where you want to apply a find-replace. It can contain a selection of [variables](#variables) and literal text.
-* `find` : (Optional) the Regular Expression to search in `text`. Can contain capture groups and [variables](#variables). If no `find` argument there is no `find-replace` operation.
-* `replace` : (Optional) the replace string of what is matched by `find`, can contain group references (`$1`) and [variables](#variables), variables are only evaluated when `find` is found in `text`, default (`""`)
+* `text` : the string where you want to apply a find-replace. It can contain a selection of [variables](variables.md) and literal text.
+* `find` : (Optional) the Regular Expression to search in `text`. Can contain capture groups and [variables](variables.md). If no `find` argument there is no `find-replace` operation.
+* `replace` : (Optional) the replace string of what is matched by `find`, can contain group references (`$1`) and [variables](variables.md), variables are only evaluated when `find` is found in `text`, default (`""`)
 * `flags` : (Optional) the flags to be used in the Regular Expression, like `gims`, default (`""`)
     * `g` : replace all occurences (global)
     * `i` : find case insensitive
 * `apply` : (Optional) defines a sequence of find-replace operations.  
   It is an array of objects, each object can have the properties: `find`, `replace` and `flags`.  
   If `apply` is defined: `find`, `replace` and `flags` sibling properties are ignored.  
-  See [`${transform}`](#variable-transform) variable for an example.
-* `key` : (Optional) It is used to [store and retrieve](#remember) the transformed string. (default: `transform` )
+  See [`${transform}`](variable-transform.md) variable for an example.
+* `key` : (Optional) It is used to [store and retrieve](remember.md) the transformed string. (default: `transform` )
 * `separator` : (Optional) the string used to join the (multi cursor) selections for `${selectedText}`, default (`"\n"`)
 * `filterSelection` : (Optional) a JavaScript expression that allows which (multi cursor) selections to use for `${selectedText}`, default (`"true"`) all are selected.<br/>The expression can use the following variables:
     * `index` : the 0-base sequence number of the selection
@@ -139,7 +139,7 @@ The command can be used with the `${input:}` variable and has the following argu
     * `numSel` : number of selections (or cursors)
 
     The `index` is 0-based to make (modulo) calculations easier. The first `index` is 0.
-* `indexName` : (Optional) the name of the index when used to transform a multi file pick ([`remember`](#remember), [`pickFile`](#pick-file), [`openDialog`](#open-dialog)), default (`""`)
+* `indexName` : (Optional) the name of the index when used to transform a multi file pick ([`remember`](remember.md), [`pickFile`](dialogs.md), [`openDialog`](dialogs.md)), default (`""`)
 
   If you want to construct a sequence number with an offset of 31 and a fixed length of 4 digits and separate the individual paths with `***` you can use these properties with the commands that have the `transform` property.
 
@@ -162,7 +162,7 @@ The command can be used with the `${input:}` variable and has the following argu
     }
   }
   ```
-* `saveToFile` : (Optional) a file path where to store the result of the transform in UTF-8 format. Can contain [variables](#variables). The string returned is the file path. The file path is also stored under the `key`. (default: undefined )
+* `saveToFile` : (Optional) a file path where to store the result of the transform in UTF-8 format. Can contain [variables](variables.md). The string returned is the file path. The file path is also stored under the `key`. (default: undefined )
 * `empty` : (Optional) [ `true` | `false` ] valid when `saveToFile` is defined. If `true`: result of command is the empty string. This is the last test of the command. (default: `false`)
 
 Example:
@@ -258,4 +258,4 @@ You can use an `input` like:
     }
 ```
 
-In the task or launch config you use `${input:saveToFile}`. You can use [`remember`](#remember) with the keys `tmpfile` for file path, `fileContent` for the file content. Or the [`${remember}`](#variables) variable.
+In the task or launch config you use `${input:saveToFile}`. You can use [`remember`](remember.md) with the keys `tmpfile` for file path, `fileContent` for the file content. Or the [`${remember}`](variables.md) variable.

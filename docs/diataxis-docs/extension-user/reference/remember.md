@@ -18,9 +18,9 @@ between sessions is described in
 
 It can be useful to store key-value pairs to be used later. The value of the key is remembered for this session of Visual Studio Code.
 
-Some commands in this extension can store key-value pairs: [`pickStringRemember`](#pickstringremember), [`promptStringRemember`](#promptstringremember), [`file.content`](#file-content) (json, key-value, yaml), [`file.pickFile`](#pick-file).
+Some commands in this extension can store key-value pairs: [`pickStringRemember`](select-remember-commands.md), [`promptStringRemember`](select-remember-commands.md), [`file.content`](file-content.md) (json, key-value, yaml), [`file.pickFile`](dialogs.md).
 
-The stored value is retrieved with a command or a [variable](#variables). In the same task/launch config or in a different one, or in a keybinding.
+The stored value is retrieved with a command or a [variable](variables.md). In the same task/launch config or in a different one, or in a keybinding.
 
 The command `extension.commandvariable.remember` is used to retreive a value for a particular key or store _key_-_value_ pair(s).
 
@@ -37,14 +37,14 @@ The `args` property of this command is an object with the properties:
     * `append`: append `text` to current value and use given _`delimiter`_
     * `prepend`: prepend `text` to current value and use given _`delimiter`_
     * `forget`: remove the given _key_ from the remember store
-* `key` : (Optional) the name of the key to retreive from the remember store. The `key` can contain [variables](#variables). (default: `"empty"`)  
-   To get the value of a named [number](#number) use the key format: <code>number-<em>name</em></code>
-* [`checkEscapedUI`](#checkescapedui) : (Optional) [ `true` | `false` ] Check if in a compound task/launch a previous UI has been escaped, if `true` behave as if this UI is escaped. This will not start the task/launch. (default: `false`)
+* `key` : (Optional) the name of the key to retreive from the remember store. The `key` can contain [variables](variables.md). (default: `"empty"`)  
+   To get the value of a named [number](number-transform.md) use the key format: <code>number-<em>name</em></code>
+* [`checkEscapedUI`](../explanation/cancelled-inputs-and-compound-tasks.md) : (Optional) [ `true` | `false` ] Check if in a compound task/launch a previous UI has been escaped, if `true` behave as if this UI is escaped. This will not start the task/launch. (default: `false`)
 * `default`: (Optional) If the given key is not found in the remember store: if there is a property `default` use this value, otherwise use a string with value `I don't remember`.
-* `transform`: (Optional) (**Not in Web**) an object with the same properties as the [`transform`](#transform) command. It allows to find and replace in the string or to extract part of the [`file.pickFile`](#pick-file) picked file URI by using a [variable](#variables). The default value of the `text` property is `${result}`. This is the value stored in the remember store for the given `key`.
-* `separator`: (Optional) (**Not in Web**) If you have picked multiple files ([`pickFile`](#pick-file), [openDialog](#open-dialog)) the URI's are transformed and then joined with this string. (default: `" "`)
+* `transform`: (Optional) (**Not in Web**) an object with the same properties as the [`transform`](number-transform.md) command. It allows to find and replace in the string or to extract part of the [`file.pickFile`](dialogs.md) picked file URI by using a [variable](variables.md). The default value of the `text` property is `${result}`. This is the value stored in the remember store for the given `key`.
+* `separator`: (Optional) (**Not in Web**) If you have picked multiple files ([`pickFile`](dialogs.md), [openDialog](dialogs.md)) the URI's are transformed and then joined with this string. (default: `" "`)
 
-If you need to construct a new string with the value you can use the [variable](#variables): <code>&dollar;{remember:<em>key</em>}</code>. This can only be used in `args` properties of commands in this extension. The `inputs` list of `launch.json` and `tasks.json` or in `keybindings` or extensions that call commands with arguments ([Multi Command](https://marketplace.visualstudio.com/items?itemName=ryuta46.multi-command)). You can modify the value with the [`transform`](#transform) command or the `transform` property.
+If you need to construct a new string with the value you can use the [variable](variables.md): <code>&dollar;{remember:<em>key</em>}</code>. This can only be used in `args` properties of commands in this extension. The `inputs` list of `launch.json` and `tasks.json` or in `keybindings` or extensions that call commands with arguments ([Multi Command](https://marketplace.visualstudio.com/items?itemName=ryuta46.multi-command)). You can modify the value with the [`transform`](number-transform.md) command or the `transform` property.
 
 If the stored value contains variables and you want them substituted you have to set the `transform` property. An empty object is enough.
 
@@ -95,7 +95,7 @@ The default content of the remember store:
 
 * `empty` : `""`, the empty string, useful if you want to store the value(s) but not return some string in `pickStringRemember`
 
-The command [pickStringRemember](#pickstringremember) also supports string manipulation objects.
+The command [pickStringRemember](select-remember-commands.md) also supports string manipulation objects.
 
 The example is a bit contrived but it shows how you can store _key_-_value_ pair(s) in a launch config or task without using a stored value, the result of the `${input:rememberConfig}` is the empty string. This enables you to store values in a launch config to be used in a `prelaunchTask` in `tasks.json`.
 

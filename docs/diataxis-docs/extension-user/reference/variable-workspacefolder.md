@@ -54,4 +54,4 @@ ${workspaceFolder:/websiteA/server}
 
 ### Variable `workspaceFolderBasename`
 
-The variable `${workspaceFolderBasename}` uses the same strategy as variable [`${workspaceFolder}`](#variable-workspacefolder) to determine the workspace to use.
+The variable `${workspaceFolderBasename}` uses the same strategy as variable [`${workspaceFolder}`](variable-workspacefolder.md) to determine the workspace to use.

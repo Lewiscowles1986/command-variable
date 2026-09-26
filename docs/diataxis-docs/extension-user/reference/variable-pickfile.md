@@ -13,14 +13,14 @@ mechanism.
 
 ### Variable `pickFile`
 
-The `pickFile` variable works the same as the [`pickStringRemember` variable](#variable-pickstringremember).
+The `pickFile` variable works the same as the [`pickStringRemember` variable](variable-pickstringremember.md).
 If you want a file path use the variable: <code>&dollar;{pickFile:<em>name</em>}</code>
 
 _`name`_ is the property name of the `pickFile` property of the `args` object of the command.
 
 Because the command has no way to determine if it is called from which workspace `tasks.json` or `launch.json` file or from a key binding the arguments for `pickFile` have to be part of the arguments of the command.
 
-See the command [`extension.commandvariable.pickFile`](#pick-file) for the arguments you can use.
+See the command [`extension.commandvariable.pickFile`](dialogs.md) for the arguments you can use.
 
 An example: you have a number of key-value files and you want to select which environment to use 
 
@@ -58,22 +58,22 @@ An example: you have a number of key-value files and you want to select which en
 
 ### Variable `openDialog`
 
-The `openDialog` variable works the same as the [`pickStringRemember` variable](#variable-pickstringremember).
+The `openDialog` variable works the same as the [`pickStringRemember` variable](variable-pickstringremember.md).
 If you want a file path use the variable: <code>&dollar;{openDialog:<em>name</em>}</code>
 
 _`name`_ is the property name of the `openDialog` property of the `args` object of the command.
 
 Because the command has no way to determine if it is called from which workspace `tasks.json` or `launch.json` file or from a key binding the arguments for `openDialog` have to be part of the arguments of the command.
 
-See the command [`extension.commandvariable.openDialog`](#open-dialog) for the arguments you can use.
+See the command [`extension.commandvariable.openDialog`](dialogs.md) for the arguments you can use.
 
 ### Variable `saveDialog`
 
-The `saveDialog` variable works the same as the [`pickStringRemember` variable](#variable-pickstringremember).
+The `saveDialog` variable works the same as the [`pickStringRemember` variable](variable-pickstringremember.md).
 If you want a file path use the variable: <code>&dollar;{saveDialog:<em>name</em>}</code>
 
 _`name`_ is the property name of the `saveDialog` property of the `args` object of the command.
 
 Because the command has no way to determine if it is called from which workspace `tasks.json` or `launch.json` file or from a key binding the arguments for `saveDialog` have to be part of the arguments of the command.
 
-See the command [`extension.commandvariable.saveDialog`](#save-dialog) for the arguments you can use.
+See the command [`extension.commandvariable.saveDialog`](dialogs.md) for the arguments you can use.

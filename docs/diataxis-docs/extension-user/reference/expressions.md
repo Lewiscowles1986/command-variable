@@ -16,14 +16,14 @@ what you need.
 
 If you have an array or object as configuration variable content (`settings.json`) and you want a particular element of the array or the value for a given object property you can use the command `extension.commandvariable.config.expression`.
 
-Can be used to have a [JavaScript expression containing variables](#variables-in-javascript-expression).
+Can be used to have a [JavaScript expression containing variables](variable-filters.md).
 
 The supported arguments:
 
-* `configVariable` : (Optional) specifies the settings variable to read. Must contain a `section` part (at least 1 `.`) : `sectionX.configY`. Supports [variables](#variables) (default: `"editor.fontSize"`).
-* `expression` : specifies a JavaScript expression that has the value of the `configVariable` in the variable `content`. The JavaScript expression can contain [variables](#variables) like <code>&dollar;{remember:<em>foobar</em>}</code> or <code>&dollar;{pickStringRemember:<em>name</em>}</code>
+* `configVariable` : (Optional) specifies the settings variable to read. Must contain a `section` part (at least 1 `.`) : `sectionX.configY`. Supports [variables](variables.md) (default: `"editor.fontSize"`).
+* `expression` : specifies a JavaScript expression that has the value of the `configVariable` in the variable `content`. The JavaScript expression can contain [variables](variables.md) like <code>&dollar;{remember:<em>foobar</em>}</code> or <code>&dollar;{pickStringRemember:<em>name</em>}</code>
 * `default` : (Optional) If the JavaScript expression fails and you have defined `default` that string is returned else `"Unknown"` is returned.
-* `keyRemember` : (Optional) If you want to [remember](#remember) the value for later use. (default: `"configExpression"`)
+* `keyRemember` : (Optional) If you want to [remember](remember.md) the value for later use. (default: `"configExpression"`)
 * `debug` : (Optional) [ `true` | `false` ] Show debug log messages in **Developer Tools Console**. (default: `false`)
 
 If the `configVariable` is an array you can address the elements with: `content[3]`
@@ -36,7 +36,7 @@ If you want the value of the `configVariable` as a JSON string **don't set** the
 
 Any expression is allowed that does not have a function call. All arithmetic operators, comparison operators, ...
 
-Can be used as [variable](#variables): <code>&dollar;{configExpression:<em>name</em>}</code>
+Can be used as [variable](variables.md): <code>&dollar;{configExpression:<em>name</em>}</code>
 
 ### Example
 
@@ -131,11 +131,11 @@ If you want to select the server from a pick list you can change the `inputs` pa
 
 ## JavaScript Expression
 
-The command `extension.commandvariable.js.expression` is an alias of [`extension.commandvariable.config.expression`](#config-expression).
+The command `extension.commandvariable.js.expression` is an alias of [`extension.commandvariable.config.expression`](expressions.md).
 
-You can use it to perform an expression with [variables](#variables).
+You can use it to perform an expression with [variables](variables.md).
 
-Can be used as [variable](#variables): <code>&dollar;{jsExpression:<em>name</em>}</code>
+Can be used as [variable](variables.md): <code>&dollar;{jsExpression:<em>name</em>}</code>
 
 ## inTerminal
 
@@ -148,7 +148,7 @@ The command `extension.commandvariable.inTerminal` has an argument that is an ob
 * `addCR` : (Optional) boolean: end the text from the `command` with a Carriage Return (`\u000D`) (default: `false`)
 * `when` : (Optional) string: only execute the command when the condition is `true`.  
   Possible tests:
-  * <code>file.exists <em>path</em></code> : _path_ can contain [variables](#variables).  
+  * <code>file.exists <em>path</em></code> : _path_ can contain [variables](variables.md).  
     example: `"when": "file.exists ${workspaceFolder}${pathSeparator}package.json"`
 
 If you want to use the value of a standard variable in the terminal you have to use the command `extension.commandvariable.transform` in the `extension.commandvariable.inTerminal` arguments. An example:
