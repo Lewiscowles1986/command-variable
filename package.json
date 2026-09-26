@@ -182,7 +182,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@rollup/plugin-commonjs": "^29.0.3",
-    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
     "@types/node": "^26.6.2",
     "@types/vscode": "~1.55.0",
     "@vitest/coverage-v8": "^5.0.2",
