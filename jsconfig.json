@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2022",
+    "lib": ["es2022"],
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    // This codebase is legacy plain-JS CommonJS. Turning `checkJs` on surfaces a
+    // large number of pre-existing errors, so it is off by default: it would
+    // drown out the genuinely useful lint and test signals.
+    // Enabling it (and fixing what it finds) is the natural next hardening step.
+    "checkJs": false,
+    "noEmit": true,
+    "types": ["node", "vscode"],
+    "baseUrl": "."
+  },
+  "include": [
+    "extension.js",
+    "extension-common.js",
+    "utils.js",
+    "uuid.js",
+    "scripts/**/*.js",
+    "test/**/*.js"
+  ],
+  "exclude": ["node_modules", "out", "coverage", "yaml.js", "uuid-org.js"]
+}
