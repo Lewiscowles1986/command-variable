@@ -1,0 +1,5 @@
+{
+  "name": "integration-workspace",
+  "private": true,
+  "description": "Fixed workspace folder used by the VS Code integration tests"
+}
