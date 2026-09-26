@@ -42,6 +42,7 @@ jobs:
           node scripts/check-docs-budget.js
           node scripts/check-docs-placement.js
           node scripts/check-docs-links.js
+          node scripts/check-docs-softwrap.js
 
       # The budget check writes the per-page table when GITHUB_STEP_SUMMARY is
       # set, so every page's computed figure, band and gap to the cap appear
