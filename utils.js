@@ -62,8 +62,8 @@ function cleanJSONString(text) {
     if (chr === '\n' || chr === '\r') { continue; }
     if (chr === ' '  || chr === '\t') { continue; }
     if (comma) {
-      if (chr === ']' || chr === '}') { }
-      else { result += ','; }
+      // A trailing comma before ] or } is dropped; any other comma is kept.
+      if (chr !== ']' && chr !== '}') { result += ','; }
       comma = false;
     }
     if (chr === ',') { comma = true; continue; }
@@ -81,7 +81,10 @@ function cleanJSONString(text) {
 let showErrMsg = true;
 function setShowErrMsg(b) { showErrMsg = b; }
 function getShowErrMsg() { return showErrMsg; }
-function getProperty(obj, prop, deflt) { return obj.hasOwnProperty(prop) ? obj[prop] : deflt; }
+// Use the prototype method rather than obj.hasOwnProperty: callers may pass
+// objects created with Object.create(null), or objects that shadow
+// hasOwnProperty, both of which would throw or misreport.
+function getProperty(obj, prop, deflt) { return Object.prototype.hasOwnProperty.call(obj, prop) ? obj[prop] : deflt; }
 function getDefaultProperty(obj, deflt) { return getProperty(obj, 'default', deflt); }
 function errorMessage(msg, noObject) {
   if (getShowErrMsg()) { vscode.window.showErrorMessage(msg); }

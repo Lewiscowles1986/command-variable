@@ -41,7 +41,7 @@ let rememberStore = { __not_yet: "I don't remember", empty: "", "__undefined": u
 
 let rememberKeepKeySet = new Set();
 for (const key in rememberStore) {
-  if (rememberStore.hasOwnProperty(key)) {
+  if (Object.prototype.hasOwnProperty.call(rememberStore, key)) {
     rememberKeepKeySet.add(key);
   };
 }
@@ -60,7 +60,7 @@ function storeStringRemember(args, result) {
       result = result.value;
       if (utils.isObject(result)) {
         for (const vkey in result) {
-          if (result.hasOwnProperty(vkey)) {
+          if (Object.prototype.hasOwnProperty.call(result, vkey)) {
             rememberStore[vkey] = result[vkey];
           }
         }
@@ -104,7 +104,7 @@ function storeStringRemember2(args, result, defaultFromArgs) {
     let argkey = utils.getProperty(args, 'key', '__unknown');
     if (utils.isObject(result) && utils.getProperty(result, 'text', undefined) === undefined) {
       for (const vkey in result) {
-        if (result.hasOwnProperty(vkey)) {
+        if (Object.prototype.hasOwnProperty.call(result, vkey)) {
           if (vkey === '__key') {
             argkey = result[vkey];
             continue;
@@ -208,7 +208,7 @@ function toString(obj) {
   if (utils.isObject(obj)) {
     let elements = [];
     for (const key in obj) {
-      if (obj.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
         elements.push(`${key}="${obj[key]}"`);
       }
     }
@@ -320,7 +320,7 @@ async function pickStringRemember(args, processPick) {
   if (!optionGroups) {
     optionGroups = [ {options: utils.getProperty(args, 'options', ['item1', 'item2'])} ];
   }
-  let result = undefined;
+  let result;
   let pickContext = {};
   let groups = [];
   const quickPickSeparator = -1;
@@ -439,7 +439,7 @@ async function pickStringRemember(args, processPick) {
         for (const p of picked) {
           if (!utils.isObject(p)) { continue; }
           for (const vkey in p) {
-            if (p.hasOwnProperty(vkey)) {
+            if (Object.prototype.hasOwnProperty.call(p, vkey)) {
               keys.add(vkey);
             }
           }
@@ -694,7 +694,8 @@ function activate(context) {
           return number;
         }
         if (numberConfig === undefined) { numberConfig = []; }
-        let unique = true;
+        // `unique` is unconditionally reset at the top of each do/while pass.
+        let unique;
         do {
           unique = true;
           number = getRandomIntInclusive(minimum, maximum);

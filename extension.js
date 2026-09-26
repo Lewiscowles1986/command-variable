@@ -130,7 +130,10 @@ function readRememberPersistent(getConfig, variableSubstitutionSync_1) {
   let content = undefined;
   try {
     content = fs.readFileSync(gRememberStorePersistentFSPath, 'utf8');
-  } catch (error) { }
+  } catch (error) {
+    // No persisted store yet (first run) or the path is unreadable; fall through
+    // to the default store contents.
+  }
   if (!content) { return; }
   let json = JSON.parse(content);
   let rememberStore = common.getRememberStore();
@@ -229,7 +232,7 @@ function activate(context) {
     if (utils.isObject(v)) {
       let result = {};
       for (const key in v) {
-        if (v.hasOwnProperty(key)) {
+        if (Object.prototype.hasOwnProperty.call(v, key)) {
           let v1a = await dataStructSubstitution(v[key], cbData, callback);
           if (v[key] !== undefined && v1a === undefined) { return undefined; }
           result[key] = v1a;
@@ -549,7 +552,7 @@ function activate(context) {
       let deflt = getProperty(args, '@default', 'Unknown');
       if (debug) { console.log(`commandvariable.file.fileAsKey: default value: ${deflt}`); }
       for (const key in args) {
-        if (args.hasOwnProperty(key) && (!key.startsWith('@')) && path) {
+        if (Object.prototype.hasOwnProperty.call(args, key) && (!key.startsWith('@')) && path) {
           if (debug) { console.log(`commandvariable.file.fileAsKey: try key: ${key}`); }
           if (path.indexOf(key) !== -1) {
             if (debug) { console.log(`commandvariable.file.fileAsKey: before variable substitution: ${args[key]}`); }
@@ -733,7 +736,7 @@ function activate(context) {
     let folderPath = undefined;
 
     if (fromFolder) {
-      let picked = undefined;
+      let picked;
       let fixedDir = getProperty(fromFolder, 'fixed');
       if (fixedDir) {
         picked = {value: fixedDir};
@@ -773,7 +776,7 @@ function activate(context) {
       }
     }
     if (fromWorkspace) {
-      let workspace = undefined;
+      let workspace;
       if (isString(fromWorkspace)) {
         workspace = common.getNamedWorkspaceFolder(fromWorkspace);
       } else {
@@ -833,8 +836,8 @@ function activate(context) {
   async function _osFileDialog(mode, args, dialogCB) {
     let options = {};
     let canSelect = getProperty(args, 'canSelect', 'files');
-    options['canSelectFiles'] = canSelect == 'files';
-    options['canSelectFolders'] = canSelect == 'folders';
+    options['canSelectFiles'] = canSelect === 'files';
+    options['canSelectFolders'] = canSelect === 'folders';
     options['canSelectMany'] = getProperty(args, 'canSelectMany');
     let defaultUri = getProperty(args, 'defaultUri');
     if (defaultUri !== undefined) {
@@ -1067,7 +1070,10 @@ function deactivate() {
     }
     try {
       fs.writeFileSync(gRememberStorePersistentFSPath, JSON.stringify(rememberStore), {encoding: 'utf8', mode: 0o600});
-    } catch (error) {}
+    } catch (error) {
+      // Persisting the remember store is best-effort: a read-only or missing
+      // path must not break deactivation.
+    }
   }
 }
 
