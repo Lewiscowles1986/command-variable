@@ -14,7 +14,9 @@ export default defineConfig({
   version: 'stable',
   workspaceFolder: 'test/fixtures/workspace',
   mocha: {
-    ui: 'bdd',
+    // @vscode/test-cli's runner constructs Mocha with `ui: 'tdd'`, and this
+    // object is spread over it. Do not set `ui` here: overriding it to 'bdd'
+    // removes the `suite`/`test` globals that the test files rely on.
     timeout: 60000,
     color: true,
   },
