@@ -8,13 +8,9 @@ minimum-extension-version: 1.71.0
 > **Audience:** Extension user · **Reading time:** 9 minutes
 # Web support matrix
 
-The extension runs on the desktop and in a web workspace (including vscode.dev
-and remote workspaces that use a browser host). Not every command can run
-there: a browser host has no Node file system, so anything that reads a file
-by path or uses a Node-only API is desktop-only.
+The extension runs on the desktop and in a web workspace (including vscode.dev and remote workspaces that use a browser host). Not every command can run there: a browser host has no Node file system, so anything that reads a file by path or uses a Node-only API is desktop-only.
 
-This page lists every command and whether it works in a web workspace. The
-[explanation page](../explanation/why-web-supports-less.md) describes why.
+This page lists every command and whether it works in a web workspace. The [explanation page](../explanation/why-web-supports-less.md) describes why.
 
 ## How to read this page
 

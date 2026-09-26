@@ -8,8 +8,7 @@ minimum-extension-version: 1.71.0
 > **Audience:** Extension user · **Reading time:** 2 minutes
 # Text and selection commands
 
-These commands read the selection and the current line of the editor you are
-working in. They combine text from more than one cursor.
+These commands read the selection and the current line of the editor you are working in. They combine text from more than one cursor.
 
 ## Catalogue
 

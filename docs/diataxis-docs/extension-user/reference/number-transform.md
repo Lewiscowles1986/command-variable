@@ -22,8 +22,7 @@ The command has the following configuration attributes:
 * `step` : number, if `random` is `false` the number returned is the previous value incremented with `step`, can be negative (default: `1`)
 * `uniqueCount` : number, if `random` is `true` the number returned is unique compared to the previous `uniqueCount` numbers (default: `0`)
 
-You can get the last value of a named number with the `remember` [command](remember.md) or [variable](variables.md).  
-You must use a special key format: <code>number-<em>name</em></code>
+You can get the last value of a named number with the `remember` [command](remember.md) or [variable](variables.md). You must use a special key format: <code>number-<em>name</em></code>
 
 ### Sequence of numbers
 
@@ -127,10 +126,7 @@ The command can be used with the `${input:}` variable and has the following argu
 * `flags` : (Optional) the flags to be used in the Regular Expression, like `gims`, default (`""`)
     * `g` : replace all occurences (global)
     * `i` : find case insensitive
-* `apply` : (Optional) defines a sequence of find-replace operations.  
-  It is an array of objects, each object can have the properties: `find`, `replace` and `flags`.  
-  If `apply` is defined: `find`, `replace` and `flags` sibling properties are ignored.  
-  See [`${transform}`](variable-transform.md) variable for an example.
+* `apply` : (Optional) defines a sequence of find-replace operations. It is an array of objects, each object can have the properties: `find`, `replace` and `flags`. If `apply` is defined: `find`, `replace` and `flags` sibling properties are ignored. See [`${transform}`](variable-transform.md) variable for an example.
 * `key` : (Optional) It is used to [store and retrieve](remember.md) the transformed string. (default: `transform` )
 * `separator` : (Optional) the string used to join the (multi cursor) selections for `${selectedText}`, default (`"\n"`)
 * `filterSelection` : (Optional) a JavaScript expression that allows which (multi cursor) selections to use for `${selectedText}`, default (`"true"`) all are selected.<br/>The expression can use the following variables:

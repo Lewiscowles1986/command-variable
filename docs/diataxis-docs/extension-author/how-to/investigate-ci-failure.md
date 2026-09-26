@@ -9,9 +9,7 @@ minimum-extension-version: 1.71.0
 
 # Investigate a CI failure
 
-The `CI` workflow has three jobs. Map the failing job to the local command that
-reproduces it, fix, and push. The docs checks run in a separate workflow and
-never block packaging.
+The `CI` workflow has three jobs. Map the failing job to the local command that reproduces it, fix, and push. The docs checks run in a separate workflow and never block packaging.
 
 ## Job to command
 
@@ -23,21 +21,13 @@ never block packaging.
 
 ## Reading the failure
 
-1. Open the failed job's log and find the first failing step. The steps run in
-   the order of the table above, so an early failure explains later ones.
-2. Run the same command locally. CI runs Ubuntu with the Node version pinned in
-   `.tool-versions`; a local failure that CI does not show usually means a
-   platform difference — run the integration job's exact command if you are on
-   macOS or Windows.
-3. The `package` job depends on `verify`: a red `verify` stops the VSIX from
-   being produced at all.
+1. Open the failed job's log and find the first failing step. The steps run in the order of the table above, so an early failure explains later ones.
+2. Run the same command locally. CI runs Ubuntu with the Node version pinned in `.tool-versions`; a local failure that CI does not show usually means a platform difference — run the integration job's exact command if you are on macOS or Windows.
+3. The `package` job depends on `verify`: a red `verify` stops the VSIX from being produced at all.
 
 ## The docs workflow is separate
 
-`.github/workflows/docs.yml` runs `npm run check:docs` on every push, in its
-own concurrency group. A red docs check never blocks `verify`, `integration`
-or `package`. Fix documentation failures in their own change; see the
-[style guide](../reference/style-guide.md) for the rules the checks enforce.
+`.github/workflows/docs.yml` runs `npm run check:docs` on every push, in its own concurrency group. A red docs check never blocks `verify`, `integration` or `package`. Fix documentation failures in their own change; see the [style guide](../reference/style-guide.md) for the rules the checks enforce.
 
 ## You have succeeded when
 

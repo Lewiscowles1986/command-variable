@@ -9,9 +9,7 @@ minimum-extension-version: 1.71.0
 
 # Run one test layer
 
-Each command runs one layer alone. Choose the cheapest layer that can express
-the assertion; the full matrix is on
-[testing](../reference/testing.md).
+Each command runs one layer alone. Choose the cheapest layer that can express the assertion; the full matrix is on [testing](../reference/testing.md).
 
 | I want to check... | Command |
 | --- | --- |
@@ -28,7 +26,5 @@ the assertion; the full matrix is on
 
 Notes:
 
-- The unit scripts regenerate the `node_modules/vscode` shim first, because
-  `npm prune` and `npm audit fix` can delete it.
-- `npm run test:integration` builds first; the integration tests load the
-  built `browser` entry point.
+- The unit scripts regenerate the `node_modules/vscode` shim first, because `npm prune` and `npm audit fix` can delete it.
+- `npm run test:integration` builds first; the integration tests load the built `browser` entry point.

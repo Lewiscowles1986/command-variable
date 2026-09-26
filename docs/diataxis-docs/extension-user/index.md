@@ -9,10 +9,7 @@ minimum-extension-version: 1.71.0
 
 # Extension user start page
 
-You edit `launch.json`, `tasks.json`, `keybindings.json` or `settings.json`.
-You do not edit this extension's source code. Every page here keeps to that
-boundary: nothing on these pages asks you to run a build tool or read this
-repository's code.
+You edit `launch.json`, `tasks.json`, `keybindings.json` or `settings.json`. You do not edit this extension's source code. Every page here keeps to that boundary: nothing on these pages asks you to run a build tool or read this repository's code.
 
 ## Where to go next
 

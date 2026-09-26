@@ -9,9 +9,7 @@ minimum-extension-version: 1.71.0
 
 # Work in the dev container
 
-`.devcontainer/` provides an isolated environment with the OS libraries
-Electron needs, keeping VS Code downloads and Extension Host processes off your
-machine.
+`.devcontainer/` provides an isolated environment with the OS libraries Electron needs, keeping VS Code downloads and Extension Host processes off your machine.
 
 ```bash
 # In VS Code: "Dev Containers: Reopen in Container"
@@ -20,10 +18,8 @@ devcontainer up --workspace-folder .
 devcontainer exec --workspace-folder . npm run verify
 ```
 
-Docker must be running. If you do not have Docker, the repository works fine
-directly on macOS, Linux or Windows.
+Docker must be running. If you do not have Docker, the repository works fine directly on macOS, Linux or Windows.
 
 ## You have succeeded when
 
-- `devcontainer exec --workspace-folder . npm run verify` passes inside the
-  container.
+- `devcontainer exec --workspace-folder . npm run verify` passes inside the container.

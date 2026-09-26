@@ -8,13 +8,11 @@ minimum-extension-version: 1.71.0
 > **Audience:** Extension user · **Reading time:** 2 minutes
 # The pickFile, openDialog and saveDialog variables
 
-The dialog commands can be used as variables, with the same named-argument
-mechanism.
+The dialog commands can be used as variables, with the same named-argument mechanism.
 
 ### Variable `pickFile`
 
-The `pickFile` variable works the same as the [`pickStringRemember` variable](variable-pickstringremember.md).
-If you want a file path use the variable: <code>&dollar;{pickFile:<em>name</em>}</code>
+The `pickFile` variable works the same as the [`pickStringRemember` variable](variable-pickstringremember.md). If you want a file path use the variable: <code>&dollar;{pickFile:<em>name</em>}</code>
 
 _`name`_ is the property name of the `pickFile` property of the `args` object of the command.
 
@@ -58,8 +56,7 @@ An example: you have a number of key-value files and you want to select which en
 
 ### Variable `openDialog`
 
-The `openDialog` variable works the same as the [`pickStringRemember` variable](variable-pickstringremember.md).
-If you want a file path use the variable: <code>&dollar;{openDialog:<em>name</em>}</code>
+The `openDialog` variable works the same as the [`pickStringRemember` variable](variable-pickstringremember.md). If you want a file path use the variable: <code>&dollar;{openDialog:<em>name</em>}</code>
 
 _`name`_ is the property name of the `openDialog` property of the `args` object of the command.
 
@@ -69,8 +66,7 @@ See the command [`extension.commandvariable.openDialog`](dialogs.md) for the arg
 
 ### Variable `saveDialog`
 
-The `saveDialog` variable works the same as the [`pickStringRemember` variable](variable-pickstringremember.md).
-If you want a file path use the variable: <code>&dollar;{saveDialog:<em>name</em>}</code>
+The `saveDialog` variable works the same as the [`pickStringRemember` variable](variable-pickstringremember.md). If you want a file path use the variable: <code>&dollar;{saveDialog:<em>name</em>}</code>
 
 _`name`_ is the property name of the `saveDialog` property of the `args` object of the command.
 

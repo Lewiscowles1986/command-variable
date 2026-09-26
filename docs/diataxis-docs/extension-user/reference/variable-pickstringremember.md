@@ -8,8 +8,7 @@ minimum-extension-version: 1.71.0
 > **Audience:** Extension user · **Reading time:** 2 minutes
 # The pickStringRemember and promptStringRemember variables
 
-The input commands can be used as variables. The arguments travel in a named
-property of the parent command's `args`.
+The input commands can be used as variables. The arguments travel in a named property of the parent command's `args`.
 
 ### Variable `pickStringRemember`
 
@@ -54,8 +53,7 @@ An example shows faster how it is to be used compared to a lot of text.
 
 ### Variable `promptStringRemember`
 
-The `promptStringRemember` variable works the same as the [`pickStringRemember` variable](variable-pickstringremember.md).
-If you want to add an entry you type on the keyboard use the variable: <code>&dollar;{promptStringRemember:<em>name</em>}</code>
+The `promptStringRemember` variable works the same as the [`pickStringRemember` variable](variable-pickstringremember.md). If you want to add an entry you type on the keyboard use the variable: <code>&dollar;{promptStringRemember:<em>name</em>}</code>
 
 _`name`_ is the property name of the `promptStringRemember` property of the `args` object of the command.
 

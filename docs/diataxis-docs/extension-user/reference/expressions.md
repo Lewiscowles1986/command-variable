@@ -8,9 +8,7 @@ minimum-extension-version: 1.71.0
 > **Audience:** Extension user · **Reading time:** 5 minutes
 # Expression commands
 
-These commands evaluate a JavaScript expression over a configuration value or
-computed text. They are the general tool when a dedicated command is almost
-what you need.
+These commands evaluate a JavaScript expression over a configuration value or computed text. They are the general tool when a dedicated command is almost what you need.
 
 ## Config Expression
 
@@ -146,10 +144,8 @@ The command `extension.commandvariable.inTerminal` has an argument that is an ob
 * `command` : the command to execute
 * `args` : (Optional) the argument (string, array or object) for the `command`
 * `addCR` : (Optional) boolean: end the text from the `command` with a Carriage Return (`\u000D`) (default: `false`)
-* `when` : (Optional) string: only execute the command when the condition is `true`.  
-  Possible tests:
-  * <code>file.exists <em>path</em></code> : _path_ can contain [variables](variables.md).  
-    example: `"when": "file.exists ${workspaceFolder}${pathSeparator}package.json"`
+* `when` : (Optional) string: only execute the command when the condition is `true`. Possible tests:
+  * <code>file.exists <em>path</em></code> : _path_ can contain [variables](variables.md). example: `"when": "file.exists ${workspaceFolder}${pathSeparator}package.json"`
 
 If you want to use the value of a standard variable in the terminal you have to use the command `extension.commandvariable.transform` in the `extension.commandvariable.inTerminal` arguments. An example:
 

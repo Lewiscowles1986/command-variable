@@ -9,9 +9,7 @@ minimum-extension-version: 1.71.0
 
 # Dependency and vendoring policy
 
-The extension ships with **no runtime dependencies**. Everything is either
-authored in this repository or copied in as a bundle. This page explains why,
-and what the copied files owe the rest of the repository.
+The extension ships with **no runtime dependencies**. Everything is either authored in this repository or copied in as a bundle. This page explains why, and what the copied files owe the rest of the repository.
 
 ## The decision
 
@@ -21,9 +19,7 @@ and what the copied files owe the rest of the repository.
 | declare no runtime dependencies | Dependabot tracks only dev tooling; the supply chain surface is the lockfile |
 | copy `yaml` as `yaml.js` | the manifest's `browser` bundle can include it; the version is recorded manually |
 
-The cost of "no runtime dependencies" is that upgrades are manual for the
-copied files. That cost is accepted because the surface is small: two copied
-libraries, both stable.
+The cost of "no runtime dependencies" is that upgrades are manual for the copied files. That cost is accepted because the surface is small: two copied libraries, both stable.
 
 ## The three places that move together
 
@@ -33,21 +29,12 @@ libraries, both stable.
 2. the `vendored` field of `package.json`,
 3. the test that asserts 1 and 2 agree.
 
-Updating the library means changing all three in one commit; the test fails
-otherwise. The procedure is on
-[update a vendored library](../how-to/update-vendored-library.md).
+Updating the library means changing all three in one commit; the test fails otherwise. The procedure is on [update a vendored library](../how-to/update-vendored-library.md).
 
 ## The exception: uuid-org.js
 
-`uuid-org.js` is a full upstream copy of the UUID library that the build does
-not consume — `uuid.js` is the copy in use. It is excluded from lint and from
-the package and is a deletion candidate. Deleting it means a deletion commit, a
-`CHANGELOG.md` entry and an edit to `CONTRIBUTING.md`; that resolution is
-deliberately deferred, and the
-[repository layout](../reference/repository-layout.md) records the position
-without resolving it.
+`uuid-org.js` is a full upstream copy of the UUID library that the build does not consume — `uuid.js` is the copy in use. It is excluded from lint and from the package and is a deletion candidate. Deleting it means a deletion commit, a `CHANGELOG.md` entry and an edit to `CONTRIBUTING.md`; that resolution is deliberately deferred, and the [repository layout](../reference/repository-layout.md) records the position without resolving it.
 
 ## What Dependabot covers
 
-Grouped monthly PRs for npm and GitHub Actions. The copied files are invisible
-to it, which is exactly why the vendored-version test exists.
+Grouped monthly PRs for npm and GitHub Actions. The copied files are invisible to it, which is exactly why the vendored-version test exists.

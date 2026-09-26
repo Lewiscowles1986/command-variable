@@ -9,10 +9,7 @@ minimum-extension-version: 1.71.0
 
 # Testing: the runner matrix
 
-Pick the cheapest layer that can express the assertion. This page is the
-factual matrix behind that rule; the reasoning is on
-[why multiple test runners](../explanation/why-multiple-test-runners.md) and
-the trust boundaries on [test strategy](../explanation/test-strategy.md).
+Pick the cheapest layer that can express the assertion. This page is the factual matrix behind that rule; the reasoning is on [why multiple test runners](../explanation/why-multiple-test-runners.md) and the trust boundaries on [test strategy](../explanation/test-strategy.md).
 
 ## The matrix
 
@@ -45,20 +42,13 @@ Two separate coverage outputs exist and are not comparable:
 
 ## The three traps
 
-1. **Two coverage reports.** Same tooling, different meaning. Never set unit
-   thresholds from integration numbers or the reverse.
-2. **The generated shim is disposable.** `node_modules/vscode` is git-ignored
-   and can be deleted by `npm prune` or `npm audit fix`, which is why every
-   test script regenerates it before running.
-3. **The integration runner uses Mocha's `tdd` UI.** `.vscode-test.mjs` spreads
-   over it. Overriding `ui` to `bdd` removes the `suite` and `test` globals the
-   test files rely on.
+1. **Two coverage reports.** Same tooling, different meaning. Never set unit thresholds from integration numbers or the reverse.
+2. **The generated shim is disposable.** `node_modules/vscode` is git-ignored and can be deleted by `npm prune` or `npm audit fix`, which is why every test script regenerates it before running.
+3. **The integration runner uses Mocha's `tdd` UI.** `.vscode-test.mjs` spreads over it. Overriding `ui` to `bdd` removes the `suite` and `test` globals the test files rely on.
 
 ## Integration tests load the built bundle
 
-The integration tests load the extension through the `browser` entry point, so
-a build (`npm run dev`) must run first. That is why `npm run test:integration`
-is a wrapper script and not a direct runner call.
+The integration tests load the extension through the `browser` entry point, so a build (`npm run dev`) must run first. That is why `npm run test:integration` is a wrapper script and not a direct runner call.
 
 ## Related pages
 

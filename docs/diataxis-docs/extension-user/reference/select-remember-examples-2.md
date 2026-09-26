@@ -8,10 +8,7 @@ minimum-extension-version: 1.71.0
 > **Audience:** Extension user · **Reading time:** 11 minutes
 # Selection list examples 6 to 9
 
-Worked examples six to nine for the `pickStringRemember` command, reused from
-the README unchanged. The earlier examples are on
-[examples 1 to 5](select-remember-examples.md); the later ones on
-[examples 10 to 15](select-remember-examples-3.md).
+Worked examples six to nine for the `pickStringRemember` command, reused from the README unchanged. The earlier examples are on [examples 1 to 5](select-remember-examples.md); the later ones on [examples 10 to 15](select-remember-examples-3.md).
 
 **Example 6**
 
@@ -59,15 +56,15 @@ We can also use the object variant of the `options`, this allows us to show reso
 
 Possibilities for the `Use previous directory` are:
 
-* Only show the label text  
+* Only show the label text
   ```json
   { "label": "Use previous directory", "value": "${remember:lintPath}" }
   ```
-* Only show the label text but variables resolved  
+* Only show the label text but variables resolved
   ```json
   { "label": "${remember:lintPath}", "value": "${remember:lintPath}" }
   ```
-* Show the resolved variables in the description  
+* Show the resolved variables in the description
   ```json
   { "label": "Use previous directory:",
      "description": "${remember:lintPath}",

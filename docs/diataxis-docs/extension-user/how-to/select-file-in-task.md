@@ -9,10 +9,7 @@ minimum-extension-version: 1.71.0
 
 # Select a file inside a task
 
-Your task needs a file that you choose at the moment the task starts, for
-example which test configuration to run. The `pickFile` command shows a
-selection list of files that match a pattern. The command's full argument list
-is on [dialog and selection commands](../reference/dialogs.md).
+Your task needs a file that you choose at the moment the task starts, for example which test configuration to run. The `pickFile` command shows a selection list of files that match a pattern. The command's full argument list is on [dialog and selection commands](../reference/dialogs.md).
 
 ## Basic use
 
@@ -29,8 +26,7 @@ is on [dialog and selection commands](../reference/dialogs.md).
 }
 ```
 
-`include` and `exclude` are glob patterns. Without `fromWorkspace` or
-`fromFolder`, the search covers the whole workspace.
+`include` and `exclude` are glob patterns. Without `fromWorkspace` or `fromFolder`, the search covers the whole workspace.
 
 ## Limit the search to a directory
 
@@ -45,8 +41,7 @@ is on [dialog and selection commands](../reference/dialogs.md).
 
 ## Store the choice for later tasks
 
-The `keyRemember` argument writes the picked path to the remember store. A
-later input reads it back:
+The `keyRemember` argument writes the picked path to the remember store. A later input reads it back:
 
 ```json
 {
@@ -61,10 +56,7 @@ The default key for `pickFile` is `pickFile`; change it with `keyRemember`.
 
 ## Show friendlier labels
 
-By default the list shows paths relative to the chosen folder. With
-`"display": "fileName"` the list shows the file name first, which is quicker
-to scan. With `"display": "transform"` you control the label completely with
-the `labelTransform` argument.
+By default the list shows paths relative to the chosen folder. With `"display": "fileName"` the list shows the file name first, which is quicker to scan. With `"display": "transform"` you control the label completely with the `labelTransform` argument.
 
 ## You have succeeded when
 

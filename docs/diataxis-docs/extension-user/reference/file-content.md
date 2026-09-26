@@ -8,10 +8,7 @@ minimum-extension-version: 1.71.0
 > **Audience:** Extension user · **Reading time:** 7 minutes
 # File content commands
 
-The command `extension.commandvariable.file.content` reads a file and returns
-its content, or one value extracted from it. It works on plain text, key-value
-files, JSON and YAML. The plain-content arguments are on this page; the
-per-format arguments follow.
+The command `extension.commandvariable.file.content` reads a file and returns its content, or one value extracted from it. It works on plain text, key-value files, JSON and YAML. The plain-content arguments are on this page; the per-format arguments follow.
 
 If you have a JSON file and you want the value for a given property you can use the command `extension.commandvariable.file.content`.
 

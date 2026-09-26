@@ -9,9 +9,7 @@ minimum-extension-version: 1.71.0
 
 # Reference index
 
-Each page lists what exists, with the minimum extension version it works from.
-Use these pages while writing a `launch.json` or `tasks.json`, not to learn the
-extension.
+Each page lists what exists, with the minimum extension version it works from. Use these pages while writing a `launch.json` or `tasks.json`, not to learn the extension.
 
 ## Command families
 

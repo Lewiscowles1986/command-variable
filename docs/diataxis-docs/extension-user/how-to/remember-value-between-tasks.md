@@ -9,15 +9,11 @@ minimum-extension-version: 1.71.0
 
 # Remember a value between tasks
 
-One task asks a question or computes a value; a later task needs the same
-value. The remember store solves this within one session. This page is the
-short version; the [remember commands](../reference/remember.md) reference page
-lists every argument.
+One task asks a question or computes a value; a later task needs the same value. The remember store solves this within one session. This page is the short version; the [remember commands](../reference/remember.md) reference page lists every argument.
 
 ## Store in the first task
 
-Any command that has a `keyRemember` or `key` argument writes to the store as
-a side effect. With `pickStringRemember`:
+Any command that has a `keyRemember` or `key` argument writes to the store as a side effect. With `pickStringRemember`:
 
 ```json
 {
@@ -43,14 +39,11 @@ a side effect. With `pickStringRemember`:
 }
 ```
 
-Both inputs can live in the same `inputs` block; reference them with
-`${input:pickPath}` and `${input:usePath}` in the tasks that need them.
+Both inputs can live in the same `inputs` block; reference them with `${input:pickPath}` and `${input:usePath}` in the tasks that need them.
 
 ## Read it as a variable
 
-Inside the `args` of another command you can use the
-[`${remember:...}` variable](../reference/variable-remember.md) instead of a
-separate input:
+Inside the `args` of another command you can use the [`${remember:...}` variable](../reference/variable-remember.md) instead of a separate input:
 
 ```json
 "args": { "text": "Building in ${remember:buildDir}" }
@@ -64,10 +57,8 @@ separate input:
 | closing and reopening VS Code | cleared, unless the persistent file is set |
 | running the storing command again | overwritten with the new value |
 
-The behaviour between sessions, and why the store exists at all, is on
-[the remember store](../explanation/the-remember-store.md).
+The behaviour between sessions, and why the store exists at all, is on [the remember store](../explanation/the-remember-store.md).
 
 ## You have succeeded when
 
-- the first task stores a value and the second task reads the same value
-  without asking again.
+- the first task stores a value and the second task reads the same value without asking again.

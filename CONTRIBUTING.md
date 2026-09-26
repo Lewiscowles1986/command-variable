@@ -1,8 +1,6 @@
 # Contributing
 
-Thanks for helping maintain Command Variable. The full contribution
-documentation lives in `docs/diataxis-docs/extension-author/`; this page is the
-one-minute route in.
+Thanks for helping maintain Command Variable. The full contribution documentation lives in `docs/diataxis-docs/extension-author/`; this page is the one-minute route in.
 
 ## Quick start
 

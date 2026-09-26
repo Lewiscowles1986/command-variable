@@ -5,12 +5,11 @@ reading-time: 1 min
 minimum-extension-version: 1.71.0
 ---
 
-> **Audience:** Extension author · **Reading time:** 1 minutes
+> **Audience:** Extension author · **Reading time:** 1 minute
 
 # Scripts
 
-Five maintenance scripts live in `scripts/`. Their purpose also sits in the
-file-header comment of each script; this page is the map.
+Maintenance scripts live in `scripts/`. Their purpose also sits in the file-header comment of each script; this page is the map.
 
 | Script | npm script | What it does |
 | --- | --- | --- |
@@ -21,16 +20,12 @@ file-header comment of each script; this page is the map.
 | `check-docs-budget.js` | `check:docs-budget` | Computes reading time for `README.md` and `docs/diataxis-docs/`, asserts front matter and audience agreement, prints the per-section README breakdown when over cap |
 | `check-docs-placement.js` | `check:docs-placement` | Enforces the extension-user tree boundary (forbidden terms), audience placement and folder/type agreement |
 | `check-docs-links.js` | `check:docs-links` | Validates relative links and in-repo anchors in `README.md` and `docs/diataxis-docs/` |
+| `check-docs-softwrap.js` | `check:docs-softwrap` | Asserts no artificial newlines: one physical line per paragraph, breaks only where markdown structure requires them |
 
-`check:docs` runs the three docs checks in sequence. The docs checks run in
-their own GitHub workflow and never gate packaging.
+`check:docs` runs the four docs checks in sequence. The docs checks run in their own GitHub workflow and never gate packaging. Scripts prefixed with `_` (for example `_build-reference-pages.js`) were one-off migration generators used when the docs tree was extracted from the README; they are not part of the toolchain.
 
 ## Two scripts worth knowing in detail
 
-**`install-vscode-stub.js`** regenerates a disposable shim. `npm prune` and
-`npm audit fix` can delete it, which is why every test script regenerates it
-defensively before running. It is never committed.
+**`install-vscode-stub.js`** regenerates a disposable shim. `npm prune` and `npm audit fix` can delete it, which is why every test script regenerates it defensively before running. It is never committed.
 
-**`package.js`** exists as a script rather than a raw `vsce` call because the
-shell syntax (`mkdir -p && ...`) is not portable to Windows, where npm scripts
-run under cmd.exe.
+**`package.js`** exists as a script rather than a raw `vsce` call because the shell syntax (`mkdir -p && ...`) is not portable to Windows, where npm scripts run under cmd.exe.

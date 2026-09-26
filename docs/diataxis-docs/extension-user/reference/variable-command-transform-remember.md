@@ -8,8 +8,7 @@ minimum-extension-version: 1.71.0
 > **Audience:** Extension user · **Reading time:** 7 minutes
 # The command variable
 
-Run a command and use its result as a variable value. The arguments travel in
-a named property of the parent command's `args`.
+Run a command and use its result as a variable value. The arguments travel in a named property of the parent command's `args`.
 
 ### Variable `command`
 

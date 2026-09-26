@@ -9,9 +9,7 @@ minimum-extension-version: 1.71.0
 
 # Repository layout
 
-Every path in the repository, what it is for, and whether it ships in the
-published `.vsix`. The `.vscodeignore` file is the product boundary: an edit
-there changes what users install.
+Every path in the repository, what it is for, and whether it ships in the published `.vsix`. The `.vscodeignore` file is the product boundary: an edit there changes what users install.
 
 ## Top-level files
 
@@ -45,10 +43,7 @@ there changes what users install.
 
 ## What does and does not ship
 
-Everything in the top-level directory other than `extension.js`, `utils.js`,
-`yaml.js`, `uuid.js` and `out/` is build or maintenance tooling and is excluded
-from the published `.vsix` by `.vscodeignore`. `out/` is deliberately not
-ignored: it is the web entry point declared by the `browser` field.
+Everything in the top-level directory other than `extension.js`, `utils.js`, `yaml.js`, `uuid.js` and `out/` is build or maintenance tooling and is excluded from the published `.vsix` by `.vscodeignore`. `out/` is deliberately not ignored: it is the web entry point declared by the `browser` field.
 
 ## Related pages
 

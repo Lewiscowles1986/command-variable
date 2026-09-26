@@ -8,13 +8,9 @@ minimum-extension-version: 1.71.0
 > **Audience:** Extension user · **Reading time:** 3 minutes
 # File path commands
 
-These commands produce file and directory paths based on the file open in the
-editor or the workspace folder. In most cases they need no arguments.
+These commands produce file and directory paths based on the file open in the editor or the workspace folder. In most cases they need no arguments.
 
-The names follow a pattern: a base name, an optional `1Up` to `5Up` suffix for
-one to five directory levels up, and an optional `Posix` suffix for a path with
-`/` as separator on every operating system. See
-[platform differences](platform-differences.md) for when that matters.
+The names follow a pattern: a base name, an optional `1Up` to `5Up` suffix for one to five directory levels up, and an optional `Posix` suffix for a path with `/` as separator on every operating system. See [platform differences](platform-differences.md) for when that matters.
 
 ## File and directory commands
 

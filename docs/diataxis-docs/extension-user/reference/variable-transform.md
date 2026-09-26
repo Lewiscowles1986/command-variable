@@ -8,8 +8,7 @@ minimum-extension-version: 1.71.0
 > **Audience:** Extension user · **Reading time:** 4 minutes
 # The transform variable
 
-Build a custom variable: the result is a `transform` computation over other
-variables. Transforms can be nested and sequenced with `apply`.
+Build a custom variable: the result is a `transform` computation over other variables. Transforms can be nested and sequenced with `apply`.
 
 ### Variable `transform`
 

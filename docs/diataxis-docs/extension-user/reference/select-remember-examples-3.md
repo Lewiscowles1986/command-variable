@@ -8,10 +8,7 @@ minimum-extension-version: 1.71.0
 > **Audience:** Extension user · **Reading time:** 12 minutes
 # Selection list examples 10 to 15
 
-Worked examples ten to fifteen for the `pickStringRemember` command, reused
-from the README unchanged. The earlier examples are on
-[examples 1 to 5](select-remember-examples.md) and
-[examples 6 to 9](select-remember-examples-2.md).
+Worked examples ten to fifteen for the `pickStringRemember` command, reused from the README unchanged. The earlier examples are on [examples 1 to 5](select-remember-examples.md) and [examples 6 to 9](select-remember-examples-2.md).
 
 **Example 10**
 
@@ -205,8 +202,7 @@ Next feature is by Axel Le Bourhis ([issue 108](https://github.com/rioj7/command
 
 Sometimes you also want to use the items selected in a group. Or have the group selected items saved in individual remember keys and use 1 multipick instead of multiple `pickStringRemember` calls for each group.
 
-You specify for the particular groups a `key`. If you want a particular `separator` you can.  
-You can add the property `joinByKey` to a group if the option values are objects with key-value pairs.
+You specify for the particular groups a `key`. If you want a particular `separator` you can. You can add the property `joinByKey` to a group if the option values are objects with key-value pairs.
 
 ```json
 {

@@ -8,10 +8,7 @@ minimum-extension-version: 1.71.0
 > **Audience:** Extension user · **Reading time:** 13 minutes
 # Dialog and selection commands
 
-These commands ask the person running the task to choose something while the
-task starts. All of them can store the choice for reuse in the same session
-with the `keyRemember` property. What the store does between sessions is
-described in [the remember store](../explanation/the-remember-store.md).
+These commands ask the person running the task to choose something while the task starts. All of them can store the choice for reuse in the same session with the `keyRemember` property. What the store does between sessions is described in [the remember store](../explanation/the-remember-store.md).
 
 ## Pick File
 
@@ -23,8 +20,7 @@ If you want to pick a file and use it in your `launch.json` or `tasks.json` you 
 
 This command uses [`vscode.workspace.findFiles`](https://code.visualstudio.com/api/references/vscode-api#workspace.findFiles) to get a list of files to show in a Quick Pick selection box.
 
-Specify the start directory path with the `fromWorkspace` or `fromFolder` property.  
-The `include` Glob Pattern can contain a path relative to the start directory.
+Specify the start directory path with the `fromWorkspace` or `fromFolder` property. The `include` Glob Pattern can contain a path relative to the start directory.
 
 If you don't specify `fromWorkspace` or `fromFolder` the search will be done over all workspaces.
 
@@ -53,22 +49,18 @@ You can set the following properties to this command:
     * `"relativePath"` : show the file path relative to the chosen folder (`fromWorkspace`, `fromFolder`) followed by the path of the chosen folder, that is relative to a possible workspace, the Fuzzy Search is now on the relative file path.
     * `"fileName"` : show the file name followed by the directory path of the file, the Fuzzy Search is now only on the file name and file extension.
     * `"transform"` : use the properties `valueTransform`, `labelTransform` and `descriptionTransform` to construct the text for the QuickPickItem properties `value`, `label` and `description`. Only items with unique `value` texts are shown.
-* `valueTransform` : (Optional) [ `string` &vert; `object` ] If an object it has the same properties as the [`transform`](number-transform.md) command. It allows to extract part of the picked file URI by using a [variable](variables.md) and perform a find-replace operation. The default value of the `text` property is `${file}`. Only used if `"display": "transform"`. The resulting text is the `value` property of the QuickPickItem.  
-If a string it uses the transform with the given name: [`valueTransform` &vert; `labelTransform` &vert; `descriptionTransform`] (max redirections 4)
+* `valueTransform` : (Optional) [ `string` &vert; `object` ] If an object it has the same properties as the [`transform`](number-transform.md) command. It allows to extract part of the picked file URI by using a [variable](variables.md) and perform a find-replace operation. The default value of the `text` property is `${file}`. Only used if `"display": "transform"`. The resulting text is the `value` property of the QuickPickItem. If a string it uses the transform with the given name: [`valueTransform` &vert; `labelTransform` &vert; `descriptionTransform`] (max redirections 4)
 * `labelTransform` : (Optional) [ `string` | `object` ] see `valueTransform`. The resulting text is the `label` property of the QuickPickItem.
 * `descriptionTransform` : (Optional) [ `string` | `object` ] see `valueTransform`. The resulting text is the `description` property of the QuickPickItem.
 * `fromWorkspace` : [ <code>"<em>name</em>"</code> | `true` | `false` ] - limit the `include` pattern relative to a workspace (default: `false`)
     * if <code>"<em>name</em>"</code>: find the workspace with that name
     * if `true`: show a Pick List of Workspaces to choose from
 * `fromFolder` : (Optional) Object with the properties (Filepaths support [variables](variables.md)):
-    * `predefined` : (Optional) An array with file system paths of directories to limit the `include` pattern relative to that directory.  
-    Each entry can be a string or an object with properties:
+    * `predefined` : (Optional) An array with file system paths of directories to limit the `include` pattern relative to that directory. Each entry can be a string or an object with properties:
 
       * `path` : file system path of directory
       * `label` : used in certain transformations
-    * `labelTransform` : (Optional) An array of strings of the transformations to apply to the pickList label when it is longer than the setting: [`commandvariable.file.pickFile.labelMaximumLength`](settings.md)  
-      Transformations are applied to the pickList label in the order defined as long as it is too large.  
-      Possible transformations are:
+    * `labelTransform` : (Optional) An array of strings of the transformations to apply to the pickList label when it is longer than the setting: [`commandvariable.file.pickFile.labelMaximumLength`](settings.md) Transformations are applied to the pickList label in the order defined as long as it is too large. Possible transformations are:
         * `useLabel` : regardless of the current length use the label property if defined in the entry in the `predefined` property.
         * `hasLabel` : if current length is too large use the label property if defined in the entry in the `predefined` property.
         * `removeWorkspacePath` : if the path can be found in one of the (Multi Root) Workspaces remove the workspace path
@@ -233,8 +225,7 @@ If you want to select a file or directory/folder you can use the command: `exten
 
 You can set the following properties to this command:
 
-* `canSelect`: specify if you want to select a file or a directory (default: `files`)  
-  Possible values are:  
+* `canSelect`: specify if you want to select a file or a directory (default: `files`) Possible values are:
   * `files`: select a file
   * `folders`: select a directory/folder
 * `canSelectMany`: (Optional) can we select multiple files. (default: `false`)

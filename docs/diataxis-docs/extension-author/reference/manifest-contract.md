@@ -9,9 +9,7 @@ minimum-extension-version: 1.71.0
 
 # Manifest contract
 
-The manifest (`package.json`) carries the extension's public surface: commands,
-activation events, settings and entry points. The unit tests enforce the rules
-below; a violation fails `npm run test:unit` with an explanation.
+The manifest (`package.json`) carries the extension's public surface: commands, activation events, settings and entry points. The unit tests enforce the rules below; a violation fails `npm run test:unit` with an explanation.
 
 ## The rules
 
@@ -23,12 +21,7 @@ below; a violation fails `npm run test:unit` with an explanation.
 
 ## Activation events
 
-The manifest declares roughly 80 `onCommand:` events. VS Code starts the
-extension the first time one of the named commands runs. Only two commands
-appear in the Command Palette (`dateTimeInEditor` and `UUIDInEditor`); every
-other command is reachable only through `${command:...}` in a `launch.json`,
-`tasks.json` or `keybindings.json`, which is why each needs its own activation
-event.
+The manifest declares roughly 80 `onCommand:` events. VS Code starts the extension the first time one of the named commands runs. Only two commands appear in the Command Palette (`dateTimeInEditor` and `UUIDInEditor`); every other command is reachable only through `${command:...}` in a `launch.json`, `tasks.json` or `keybindings.json`, which is why each needs its own activation event.
 
 ## Settings
 
@@ -42,5 +35,4 @@ Three configuration properties are contributed:
 
 ## Where the tests live
 
-`test/unit/manifest.test.js`. The full set of maintenance assertions is
-described on [quality checks](quality-gates.md).
+`test/unit/manifest.test.js`. The full set of maintenance assertions is described on [quality checks](quality-gates.md).

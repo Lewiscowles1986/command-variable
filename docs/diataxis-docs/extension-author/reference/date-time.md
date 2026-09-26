@@ -9,9 +9,7 @@ minimum-extension-version: 1.71.0
 
 # Reference: the dateTime family
 
-This page maps the `dateTime` family to the source, the manifest and the tests.
-The Extension user view of the same commands is the
-[date and time commands](../../extension-user/reference/date-time.md) page.
+This page maps the `dateTime` family to the source, the manifest and the tests. The Extension user view of the same commands is the [date and time commands](../../extension-user/reference/date-time.md) page.
 
 ## Where each part lives
 
@@ -38,16 +36,10 @@ flowchart LR
 
 One implementation serves both commands:
 
-- `extension.commandvariable.dateTime` is registered with
-  `vscode.commands.registerCommand` and returns the string as the command result.
-- `extension.commandvariable.dateTimeInEditor` is registered with
-  `vscode.commands.registerTextEditorCommand` and replaces the current selection
-  with the same computed string.
+- `extension.commandvariable.dateTime` is registered with `vscode.commands.registerCommand` and returns the string as the command result.
+- `extension.commandvariable.dateTimeInEditor` is registered with `vscode.commands.registerTextEditorCommand` and replaces the current selection with the same computed string.
 
-The arguments are read with `getProperty` and defaulted with `dblQuest`, so a
-missing `args` behaves as an empty object rather than throwing. The `template`
-replacement uses a `\${(\w+)}` regular expression against the part map built
-from `formatToParts()`, so an unknown placeholder becomes an empty string.
+The arguments are read with `getProperty` and defaulted with `dblQuest`, so a missing `args` behaves as an empty object rather than throwing. The `template` replacement uses a `\${(\w+)}` regular expression against the part map built from `formatToParts()`, so an unknown placeholder becomes an empty string.
 
 ## What the tests prove, layer by layer
 
@@ -57,13 +49,8 @@ from `formatToParts()`, so an unknown placeholder becomes an empty string.
 | Unit | `__invoke` with a fixed `locale` and `timeZone: 'UTC'` | template substitution produces the expected shape |
 | Integration | command runs in a real Extension Host | registration happens at activation, end to end |
 
-The unit test pins `timeZone: 'UTC'` so the assertion cannot fail on a machine
-in a different time zone. Follow that pattern for any new time-sensitive
-assertion.
+The unit test pins `timeZone: 'UTC'` so the assertion cannot fail on a machine in a different time zone. Follow that pattern for any new time-sensitive assertion.
 
 ## Why this family is the worked example
 
-The family exercises every part of the contract with the smallest code: two
-activation events, one palette entry, one implementation, one unit test and one
-integration path. The [add a command end to end](../tutorials/add-a-command-end-to-end.md)
-tutorial uses it as the template for new commands.
+The family exercises every part of the contract with the smallest code: two activation events, one palette entry, one implementation, one unit test and one integration path. The [add a command end to end](../tutorials/add-a-command-end-to-end.md) tutorial uses it as the template for new commands.

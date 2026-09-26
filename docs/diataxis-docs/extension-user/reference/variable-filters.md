@@ -8,8 +8,7 @@ minimum-extension-version: 1.71.0
 > **Audience:** Extension user · **Reading time:** 2 minutes
 # Variable filters
 
-A variable can pass its result through filters, written after the variable
-name and separated by `|`.
+A variable can pass its result through filters, written after the variable name and separated by `|`.
 
 ### Variable Filters
 

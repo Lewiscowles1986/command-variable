@@ -9,12 +9,7 @@ minimum-extension-version: 1.71.0
 
 # Vocabulary
 
-A controlled term list plus five structural rules. This is a writing guide for
-new documentation, not a cleanup mandate for the repository: these rules apply
-to `README.md` and `docs/diataxis-docs/` only. `CONTRIBUTING.md`, `CHANGELOG.md`
-and source comments are out of scope, and editing them to satisfy this page is
-wrong. The list is guidance for whoever writes or reviews a page; no tool
-enforces it.
+A controlled term list plus five structural rules. This is a writing guide for new documentation, not a cleanup mandate for the repository: these rules apply to `README.md` and `docs/diataxis-docs/` only. `CONTRIBUTING.md`, `CHANGELOG.md` and source comments are out of scope, and editing them to satisfy this page is wrong. The list is guidance for whoever writes or reviews a page; no tool enforces it.
 
 ## Structural rules
 
@@ -26,8 +21,7 @@ enforces it.
 
 ## Term mapping
 
-Use the right-hand term in new pages. Keep the original only in the cases
-listed in the last column.
+Use the right-hand term in new pages. Keep the original only in the cases listed in the last column.
 
 | In the repository today | Why it fails | Use instead | Keep the original when |
 | --- | --- | --- | --- |
@@ -64,17 +58,9 @@ listed in the last column.
 ## What this list is not
 
 - It is not enforced by a tool. The three `check:docs-*` scripts do not read it.
-- It is not a claim of compliance with ASD-STE100. The standard and its
-  dictionary are paid, copyrighted material, and certification needs a licensed
-  checker. This is an STE-aligned subset: the term table is mechanical, the
-  structural rules are not, and automating half would suggest that a passing
-  check means compliant prose.
-- It is not finished. If a term list entry is wrong for a page you are writing,
-  propose a change to this page rather than working around it.
+- It is not a claim of compliance with ASD-STE100. The standard and its dictionary are paid, copyrighted material, and certification needs a licensed checker. This is an STE-aligned subset: the term table is mechanical, the structural rules are not, and automating half would suggest that a passing check means compliant prose.
+- It is not finished. If a term list entry is wrong for a page you are writing, propose a change to this page rather than working around it.
 
 ## Banned as names for a person
 
-Bare `user`, `developer`, `end user`, bare `author`, `maintainer`,
-`contributor`. The qualified forms "Extension user" and "Extension author" are
-the sanctioned names. No abbreviations: `extension-user` does not become `user`,
-and "Extension author" does not become "author", after first mention.
+Bare `user`, `developer`, `end user`, bare `author`, `maintainer`, `contributor`. The qualified forms "Extension user" and "Extension author" are the sanctioned names. No abbreviations: `extension-user` does not become `user`, and "Extension author" does not become "author", after first mention.

@@ -9,16 +9,14 @@ minimum-extension-version: 1.71.0
 
 # Date and time commands
 
-Two commands produce a language-sensitive formatting of the current date and
-time. Both use the same arguments; they differ only in where the result goes.
+Two commands produce a language-sensitive formatting of the current date and time. Both use the same arguments; they differ only in where the result goes.
 
 | Command | Where the result goes | Use it in |
 | --- | --- | --- |
 | `extension.commandvariable.dateTime` | the variable value | `launch.json`, `tasks.json` |
 | `extension.commandvariable.dateTimeInEditor` | the text you are editing | `keybindings.json` |
 
-**Minimum extension version: 1.71.0.** Both commands work in a web workspace.
-Web support is marked per command in the [web support matrix](web-support-matrix.md).
+**Minimum extension version: 1.71.0.** Both commands work in a web workspace. Web support is marked per command in the [web support matrix](web-support-matrix.md).
 
 ## Arguments
 
@@ -28,15 +26,9 @@ Web support is marked per command in the [web support matrix](web-support-matrix
 | `options` | object | no | the options for `Intl.DateTimeFormat`, such as `year: "numeric"` or `dateStyle: "full"` |
 | `template` | string | no | a template string that places the formatted parts. When omitted, all formatted parts are joined |
 
-`locale` and `options` are passed to
-[`Intl.DateTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat/DateTimeFormat),
-so their allowed values are the ones documented there.
+`locale` and `options` are passed to [`Intl.DateTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat/DateTimeFormat), so their allowed values are the ones documented there.
 
-A `template` uses the same `${name}` placeholders as a JavaScript template
-string. The valid names are the `type` values returned by
-[`Intl.DateTimeFormat.prototype.formatToParts()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat/formatToParts),
-for example `year`, `month`, `day`, `hour`, `minute`, `second`, `weekday`.
-Any other text in the template is copied to the result as written.
+A `template` uses the same `${name}` placeholders as a JavaScript template string. The valid names are the `type` values returned by [`Intl.DateTimeFormat.prototype.formatToParts()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat/formatToParts), for example `year`, `month`, `day`, `hour`, `minute`, `second`, `weekday`. Any other text in the template is copied to the result as written.
 
 ## Examples
 
@@ -142,7 +134,5 @@ jueves__20200319T184634
 
 ## Related pages
 
-- [How a command variable resolves](../explanation/how-command-variable-resolves.md)
-  explains what VS Code does when it substitutes `${input:shortDate}`.
-- [Use a result in a keybinding](../how-to/use-result-in-keybinding.md) walks
-  through the first example step by step.
+- [How a command variable resolves](../explanation/how-command-variable-resolves.md) explains what VS Code does when it substitutes `${input:shortDate}`.
+- [Use a result in a keybinding](../how-to/use-result-in-keybinding.md) walks through the first example step by step.

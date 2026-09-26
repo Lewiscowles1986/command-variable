@@ -8,13 +8,11 @@ If a command or variable is almost what you need you can use the `transform` com
 
 Not all commands are supported yet in the web extension version. The full documentation says which: see the [web support matrix](docs/diataxis-docs/extension-user/reference/web-support-matrix.md).
 
-Some commands can store the result to be retrieved later in the session.
-If you want persistent storage have a look at the [`commandvariable.remember.persistent.file`](docs/diataxis-docs/extension-user/reference/settings.md) setting.
+Some commands can store the result to be retrieved later in the session. If you want persistent storage have a look at the [`commandvariable.remember.persistent.file`](docs/diataxis-docs/extension-user/reference/settings.md) setting.
 
 ## Where did a README section go?
 
-The command-by-command reference moved to one page per command family. Everything
-is still here; only the location changed. Use this table to find the old section:
+The command-by-command reference moved to one page per command family. Everything is still here; only the location changed. Use this table to find the old section:
 
 | Was in the README under | Now at |
 | --- | --- |
@@ -44,26 +42,18 @@ is still here; only the location changed. Use this table to find the old section
 
 ## A one-minute tour
 
-A command variable is an entry in the `inputs` block of a `launch.json` or
-`tasks.json` file. When the task starts, VS Code runs the command and uses its
-result as the value.
+A command variable is an entry in the `inputs` block of a `launch.json` or `tasks.json` file. When the task starts, VS Code runs the command and uses its result as the value.
 
 1. Pick a task that needs a computed value, for example a file path.
 2. Add an `inputs` entry with `"type": "command"` and the command to run.
 3. Reference the input with `${input:...}` where you need the value.
 4. Run the task. The value is computed at that moment.
 
-The [reference index](docs/diataxis-docs/extension-user/reference/index.md)
-lists every command by family; the
-[how-to index](docs/diataxis-docs/extension-user/how-to/index.md) lists one-page
-solutions; [how a command variable resolves](docs/diataxis-docs/extension-user/explanation/how-command-variable-resolves.md)
-explains the mechanism.
+The [reference index](docs/diataxis-docs/extension-user/reference/index.md) lists every command by family; the [how-to index](docs/diataxis-docs/extension-user/how-to/index.md) lists one-page solutions; [how a command variable resolves](docs/diataxis-docs/extension-user/explanation/how-command-variable-resolves.md) explains the mechanism.
 
 ## First example, complete
 
-This example uses `extension.commandvariable.file.fileAsKey` to select task
-arguments based on the file you are running. The keys of the `args` object are
-searched for in the path of the active file (directory separator is `/`).
+This example uses `extension.commandvariable.file.fileAsKey` to select task arguments based on the file you are running. The keys of the `args` object are searched for in the path of the active file (directory separator is `/`).
 
 ```json
 {
@@ -92,20 +82,14 @@ searched for in the path of the active file (directory separator is `/`).
 }
 ```
 
-With `calculation.py` open the task runs with `-n 4224`; with `client.py` open
-it runs with `-i calc-out.yaml`. The full description is on
-[file path commands](docs/diataxis-docs/extension-user/reference/file-paths.md).
+With `calculation.py` open the task runs with `-n 4224`; with `client.py` open it runs with `-i calc-out.yaml`. The full description is on [file path commands](docs/diataxis-docs/extension-user/reference/file-paths.md).
 
-If files with the same name exist in different directories, use part of the full
-path to select the correct one, like `"/dir1/main.py"` and `"/dir2/main.py"`.
+If files with the same name exist in different directories, use part of the full path to select the correct one, like `"/dir1/main.py"` and `"/dir2/main.py"`.
 
 The `args` property can contain a few special keys:
 
-* `@useCommand` : the value is a command variable that describes the command to
-  execute to get the file path to use. Example for CMake build projects:
-  `"@useCommand": "${command:cmake.launchTargetPath}"`
-* `@default` : the string to return when none of the keys is found in the file
-  path (default: `Unknown`)
+* `@useCommand` : the value is a command variable that describes the command to execute to get the file path to use. Example for CMake build projects: `"@useCommand": "${command:cmake.launchTargetPath}"`
+* `@default` : the string to return when none of the keys is found in the file path (default: `Unknown`)
 
 The value strings may contain [variables](docs/diataxis-docs/extension-user/reference/variables.md).
 

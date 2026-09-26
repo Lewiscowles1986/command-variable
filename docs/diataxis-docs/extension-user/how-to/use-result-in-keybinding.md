@@ -9,15 +9,11 @@ minimum-extension-version: 1.71.0
 
 # Use a result in a keybinding
 
-A keybinding cannot carry an `inputs` block, so the editor variants write their
-result into the text you are editing instead of returning it. This page walks
-through the timestamp example; the same pattern applies to
-`UUIDInEditor` and `file.contentInEditor`.
+A keybinding cannot carry an `inputs` block, so the editor variants write their result into the text you are editing instead of returning it. This page walks through the timestamp example; the same pattern applies to `UUIDInEditor` and `file.contentInEditor`.
 
 ## Add the keybinding
 
-Open **Keyboard Shortcuts** from the Command Palette, pick
-**Open Keyboard Shortcuts (JSON)**, and add:
+Open **Keyboard Shortcuts** from the Command Palette, pick **Open Keyboard Shortcuts (JSON)**, and add:
 
 ```json
   {
@@ -40,14 +36,11 @@ Open **Keyboard Shortcuts** from the Command Palette, pick
   }
 ```
 
-The arguments are the same as the `dateTime` command's; they are documented on
-[date and time commands](../reference/date-time.md).
+The arguments are the same as the `dateTime` command's; they are documented on [date and time commands](../reference/date-time.md).
 
 ## Use it
 
-Put the cursor in a text file where you want the timestamp and press the key
-combination. The timestamp replaces the current selection, or is inserted at
-the cursor if nothing is selected.
+Put the cursor in a text file where you want the timestamp and press the key combination. The timestamp replaces the current selection, or is inserted at the cursor if nothing is selected.
 
 ## Generate a UUID with a keybinding
 
@@ -59,8 +52,7 @@ the cursor if nothing is selected.
   }
 ```
 
-The output formats (`hexString`, `urn`, and more) are on
-[identity and platform commands](../reference/identity.md).
+The output formats (`hexString`, `urn`, and more) are on [identity and platform commands](../reference/identity.md).
 
 ## You have succeeded when
 

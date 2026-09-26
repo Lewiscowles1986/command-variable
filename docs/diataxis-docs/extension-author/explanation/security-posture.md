@@ -9,9 +9,7 @@ minimum-extension-version: 1.71.0
 
 # Security posture
 
-The extension computes strings. It does not start other programs, talk to the
-network, or evaluate dynamic code beyond a small, pinned set. These are not
-aspirations: tests assert them, and a violation turns a test red.
+The extension computes strings. It does not start other programs, talk to the network, or evaluate dynamic code beyond a small, pinned set. These are not aspirations: tests assert them, and a violation turns a test red.
 
 ## The three assertions
 
@@ -23,21 +21,13 @@ aspirations: tests assert them, and a violation turns a test red.
 
 ## Why pinning works here
 
-A pinned count is a tripwire, not a fence. Nothing stops an author from raising
-the number — but the change cannot land silently, because the test fails with
-the old count and the diff shows the new evaluation site next to it. The same
-reasoning pins the bundle's require set.
+A pinned count is a tripwire, not a fence. Nothing stops an author from raising the number — but the change cannot land silently, because the test fails with the old count and the diff shows the new evaluation site next to it. The same reasoning pins the bundle's require set.
 
 ## What is deliberately allowed
 
-- **Dynamic code evaluation for expressions.** `config.expression` and
-  `js.expression` evaluate a JavaScript expression the user wrote in their own
-  configuration. That is the feature. The pin exists because the surface must
-  stay deliberate.
-- **File reads.** `file.content` reads files the user's configuration names.
-  Reads are local, user-directed, and never write.
-- **Clipboard.** `getClipboard` and `setClipboard` use the VS Code API, which
-  asks the user for permission on first use.
+- **Dynamic code evaluation for expressions.** `config.expression` and `js.expression` evaluate a JavaScript expression the user wrote in their own configuration. That is the feature. The pin exists because the surface must stay deliberate.
+- **File reads.** `file.content` reads files the user's configuration names. Reads are local, user-directed, and never write.
+- **Clipboard.** `getClipboard` and `setClipboard` use the VS Code API, which asks the user for permission on first use.
 
 ## What is deliberately absent
 

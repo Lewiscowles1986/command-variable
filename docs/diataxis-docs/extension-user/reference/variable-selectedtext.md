@@ -8,8 +8,7 @@ minimum-extension-version: 1.71.0
 > **Audience:** Extension user · **Reading time:** 2 minutes
 # The selectedText variable
 
-`${selectedText}` joins the selections of the current editor. With more than
-one cursor you can choose the separator and which selections take part.
+`${selectedText}` joins the selections of the current editor. With more than one cursor you can choose the separator and which selections take part.
 
 ### Variable `selectedText`
 

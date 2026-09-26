@@ -9,9 +9,7 @@ minimum-extension-version: 1.71.0
 
 # The variable did not resolve
 
-The symptom: your task or launch configuration runs, but the literal text
-`${command:...}` or `${input:...}` reaches the shell or debugger instead of a
-computed value. Nothing fails loudly; the extension stays silent.
+The symptom: your task or launch configuration runs, but the literal text `${command:...}` or `${input:...}` reaches the shell or debugger instead of a computed value. Nothing fails loudly; the extension stays silent.
 
 ## Decide which case you are in
 
@@ -24,15 +22,11 @@ computed value. Nothing fails loudly; the extension stays silent.
 
 ## Check the input is in the same file
 
-VS Code resolves `${input:...}` against the `inputs` block of the same file. An
-input defined in `tasks.json` is not visible to `launch.json`.
+VS Code resolves `${input:...}` against the `inputs` block of the same file. An input defined in `tasks.json` is not visible to `launch.json`.
 
 ## Check the substitution moment
 
-Substitution happens when the task or launch configuration starts, not when you
-save the file. A variable that references a file written by an earlier task in
-the same run is resolved before that task writes it; see
-[how a command variable resolves](../explanation/how-command-variable-resolves.md).
+Substitution happens when the task or launch configuration starts, not when you save the file. A variable that references a file written by an earlier task in the same run is resolved before that task writes it; see [how a command variable resolves](../explanation/how-command-variable-resolves.md).
 
 ## See the value VS Code computed
 
@@ -53,8 +47,7 @@ You can print any variable with a small task:
 }
 ```
 
-Run it and read the terminal. This is the fastest way to see what a variable
-actually produced.
+Run it and read the terminal. This is the fastest way to see what a variable actually produced.
 
 ## You have succeeded when
 

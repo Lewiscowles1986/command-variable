@@ -9,8 +9,7 @@ minimum-extension-version: 1.71.0
 
 # Explanation index
 
-These pages show how the extension works. Read them when a behaviour surprises
-you, not while writing a configuration file.
+These pages show how the extension works. Read them when a behaviour surprises you, not while writing a configuration file.
 
 - [How a command variable resolves](how-command-variable-resolves.md) — what VS Code does with `${command:...}` and `inputs`
 - [The remember store](the-remember-store.md) — where values live between tasks and when they are forgotten

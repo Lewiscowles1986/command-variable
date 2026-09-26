@@ -9,8 +9,7 @@ minimum-extension-version: 1.71.0
 
 # How-to index
 
-One page per task. Each page ends with "you have succeeded when ...", so you
-can check the result yourself.
+One page per task. Each page ends with "you have succeeded when ...", so you can check the result yourself.
 
 ## Working with files and paths
 

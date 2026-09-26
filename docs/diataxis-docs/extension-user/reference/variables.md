@@ -8,10 +8,7 @@ minimum-extension-version: 1.71.0
 > **Audience:** Extension user · **Reading time:** 4 minutes
 # Variables
 
-Many command arguments support variables. VS Code performs variable
-substitution in task and launch fields, but not inside the `inputs` block, so
-this extension implements a selection of variables for use in command
-arguments.
+Many command arguments support variables. VS Code performs variable substitution in task and launch fields, but not inside the `inputs` block, so this extension implements a selection of variables for use in command arguments.
 
 ## The variables
 
@@ -38,16 +35,12 @@ VSC does not perform [variable substitution](https://code.visualstudio.com/docs/
 * `${fileDirname}` : the current opened file's dirname
 * <code>&dollar;{pickStringRemember:<em>name</em>}</code> : use the [`pickStringRemember`](select-remember-commands.md) command as a variable, arguments are part of the [`pickStringRemember` property of the (parent) command](variable-pickstringremember.md)
 * <code>&dollar;{promptStringRemember:<em>name</em>}</code> : use the [`promptStringRemember`](select-remember-commands.md) command as a variable, arguments are part of the [`promptStringRemember` property of the (parent) command](variable-pickstringremember.md)
-* <code>&dollar;{remember:<em>key</em>}</code> : use the [remember](remember.md) command as a variable,
-  _`key`_ is first tested as a _named argument object property_ (like `pickStringRemember`), arguments are part of the `remember` property of the (parent) command.
-  If not found and _`key`_ has the format <code>number-<em>name</em></code> the _name_ is used to get the last value of a named [number](number-transform.md).
-  If not found _`key`_ is a key in the remeber store. _`key`_ matches:
+* <code>&dollar;{remember:<em>key</em>}</code> : use the [remember](remember.md) command as a variable, _`key`_ is first tested as a _named argument object property_ (like `pickStringRemember`), arguments are part of the `remember` property of the (parent) command. If not found and _`key`_ has the format <code>number-<em>name</em></code> the _name_ is used to get the last value of a named [number](number-transform.md). If not found _`key`_ is a key in the remeber store. _`key`_ matches:
     * `key` argument of the `pickStringRemember` or `promptStringRemember` variable/command
     * `keyRemember` argument of the `pickFile` or `fileContent` variable/command
     * or a key used in storing multiple values in the `remember` command.
 
-  You can add the [`checkEscapedUI`](../explanation/cancelled-inputs-and-compound-tasks.md) property to the _`key`_ name if it is not a _named argument object_ like <code>&dollar;{remember:<em>key</em>__checkEscapedUI}</code>.
-  See a few [examples of the `${remember}` variable](variable-remember.md).
+  You can add the [`checkEscapedUI`](../explanation/cancelled-inputs-and-compound-tasks.md) property to the _`key`_ name if it is not a _named argument object_ like <code>&dollar;{remember:<em>key</em>__checkEscapedUI}</code>. See a few [examples of the `${remember}` variable](variable-remember.md).
 * <code>&dollar;{pickFile:<em>name</em>}</code> : use the [`pickFile`](dialogs.md) command as a variable, arguments are part of the [`pickFile` property of the (parent) command](variable-pickfile.md)
 * <code>&dollar;{openDialog:<em>name</em>}</code> : use the [`openDialog`](dialogs.md) command as a variable, arguments are part of the [`openDialog` property of the (parent) command](variable-pickfile.md)
 * <code>&dollar;{saveDialog:<em>name</em>}</code> : use the [`saveDialog`](dialogs.md) command as a variable, arguments are part of the [`saveDialog` property of the (parent) command](variable-pickfile.md)
@@ -64,8 +57,7 @@ VSC does not perform [variable substitution](https://code.visualstudio.com/docs/
   * the [`saveDialog:transform:text`](dialogs.md) property. It contains the string that is the value of the picked item.
 
   In all other cases it is the empty string.
-* <code>&dollar;{index}</code>
-  <code>&dollar;{index:<em>name</em>}</code> : a special variable used in:
+* <code>&dollar;{index}</code> <code>&dollar;{index:<em>name</em>}</code> : a special variable used in:
   * the [`remember:transform:text`](remember.md) property.
   * the [`pickFile:transform:text`](dialogs.md) property.
   * the [`openDialog:transform:text`](dialogs.md) property.

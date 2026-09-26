@@ -9,8 +9,7 @@ minimum-extension-version: 1.71.0
 
 # Explanation index
 
-These pages explain why the repository is the way it is. Read them before
-changing structure, and when a design choice looks wrong.
+These pages explain why the repository is the way it is. Read them before changing structure, and when a design choice looks wrong.
 
 - [Desktop and web architecture](desktop-web-architecture.md) — two entry points, one shared source, what rollup does
 - [Why multiple test runners](why-multiple-test-runners.md) — the decision rule and the table behind the three runners

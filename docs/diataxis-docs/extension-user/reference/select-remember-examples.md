@@ -8,11 +8,7 @@ minimum-extension-version: 1.71.0
 > **Audience:** Extension user · **Reading time:** 7 minutes
 # Selection list examples 1 to 5
 
-The first five worked examples for the `pickStringRemember` command, reused
-from the README unchanged. The command's arguments are on the
-[selection list and prompt commands](select-remember-commands.md) page. The
-later examples are on [examples 6 to 10](select-remember-examples-2.md) and
-[examples 11 to 15](select-remember-examples-3.md).
+The first five worked examples for the `pickStringRemember` command, reused from the README unchanged. The command's arguments are on the [selection list and prompt commands](select-remember-commands.md) page. The later examples are on [examples 6 to 10](select-remember-examples-2.md) and [examples 11 to 15](select-remember-examples-3.md).
 
 **Example 1**
 

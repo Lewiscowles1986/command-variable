@@ -9,8 +9,7 @@ minimum-extension-version: 1.71.0
 
 # Reference index
 
-Descriptive pages: what exists, what each part is called, what each check
-checks. Use these to look a fact up, not to learn the repository.
+Descriptive pages: what exists, what each part is called, what each check checks. Use these to look a fact up, not to learn the repository.
 
 ## Testing and quality
 

@@ -9,9 +9,7 @@ minimum-extension-version: 1.71.0
 
 # Extension author start page
 
-You edit this repository. Every page here assumes you can run `npm ci` and the
-repository's scripts. The Extension user tree never assumes that; keep new
-pages within their tree's boundary.
+You edit this repository. Every page here assumes you can run `npm ci` and the repository's scripts. The Extension user tree never assumes that; keep new pages within their tree's boundary.
 
 ## Where to go next
 

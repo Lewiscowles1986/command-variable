@@ -8,9 +8,7 @@ minimum-extension-version: 1.71.0
 > **Audience:** Extension user · **Reading time:** 2 minutes
 # The workspaceFolder variables
 
-`${workspaceFolder}` and `${workspaceFolderBasename}` resolve against the
-workspace folder that contains the current file. The exact rules, including
-multi-root workspaces, are on this page.
+`${workspaceFolder}` and `${workspaceFolderBasename}` resolve against the workspace folder that contains the current file. The exact rules, including multi-root workspaces, are on this page.
 
 ### Variable `workspaceFolder`
 
