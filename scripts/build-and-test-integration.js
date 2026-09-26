@@ -14,15 +14,27 @@ const repoRoot = path.resolve(__dirname, '..');
 const isCI = Boolean(process.env.CI);
 const isLinux = process.platform === 'linux';
 const isRoot = typeof process.getuid === 'function' && process.getuid() === 0;
+const isWindows = process.platform === 'win32';
 
+/**
+ * On Windows, `npm` is `npm.cmd`, and spawning a .cmd shim without a shell fails
+ * with EINVAL. Everything else runs shell-free, which keeps arguments safe from
+ * shell interpretation.
+ */
 function run(command, args, options = {}) {
+  const needsShell = isWindows;
   console.log(`\n$ ${command} ${args.join(' ')}`);
   const result = spawnSync(command, args, {
     cwd: repoRoot,
     stdio: 'inherit',
     env: process.env,
+    shell: needsShell,
     ...options,
   });
+  if (result.error) {
+    console.error(`Failed to launch ${command}: ${result.error.message}`);
+    process.exit(1);
+  }
   if (result.status !== 0) {
     process.exit(result.status ?? 1);
   }
@@ -30,26 +42,23 @@ function run(command, args, options = {}) {
 
 // 1. The integration tests load the extension through package.json "main", which
 //    requires ./out/extension-common to exist, so the build must come first.
-run('npm', ['run', 'dev']);
+run(isWindows ? 'npm.cmd' : 'npm', ['run', 'dev']);
 
-// 2. Assemble the vscode-test argument list.
-const args = [];
+// 2. Run @vscode/test-electron, wrapped in a virtual framebuffer on headless
+//    Linux CI because the Extension Host needs a display.
+const vscodeTest = path.join(
+  repoRoot,
+  'node_modules',
+  '.bin',
+  isWindows ? 'vscode-test.cmd' : 'vscode-test'
+);
 
 if (isCI && isLinux && !process.env.DISPLAY) {
-  // Headless Linux: wrap the run in a virtual framebuffer.
-  args.push('xvfb-run', '-a', '-s', '-screen 0 1024x768x24');
+  run('xvfb-run', ['-a', '-s', '-screen 0 1024x768x24', vscodeTest]);
+} else {
+  const extra = isLinux && isRoot ? ['--no-sandbox', '--disable-gpu'] : [];
+  if (extra.length > 0) {
+    process.env.ELECTRON_DISABLE_SANDBOX = '1';
+  }
+  run(vscodeTest, extra);
 }
-
-args.push('vscode-test');
-
-if (isLinux && isRoot) {
-  // Electron cannot use its sandbox as root.
-  args.push('--no-sandbox', '--disable-gpu');
-  process.env.ELECTRON_DISABLE_SANDBOX = '1';
-}
-
-const [command, ...commandArgs] = args;
-const useLocalBinary = command === 'vscode-test';
-run(useLocalBinary ? path.join(repoRoot, 'node_modules', '.bin', command) : command, commandArgs, {
-  shell: !useLocalBinary,
-});
