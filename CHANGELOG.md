@@ -13,6 +13,7 @@
 ### Changed
 - Test code, tooling and the lockfile are no longer ignored by git, so the test suite and reproducible installs travel with the repository
 - Unused development dependencies (`mocha`, `simple-mock`, `glob`, `@types/mocha`, `@types/assert`) removed; `@vscode/test-cli` provides its own test runner
+- `engines.vscode` raised to `^1.138.0` to stay aligned with the bumped `@types/vscode` range (both move together; `vsce` rejects a types version newer than the declared engine)
 
 ## [1.71.0] 2026-05-30
 ### Added
