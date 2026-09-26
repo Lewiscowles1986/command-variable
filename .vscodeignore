@@ -1,8 +1,38 @@
+# Everything here is excluded from the published .vsix.
+# Keep this list in sync with the repository layout: the goal is a package that
+# contains only the runtime entry points, their bundled dependencies and assets.
+
+# Editor and repository metadata
 .vscode/**
+.github/**
+.devcontainer/**
 .gitignore
+
+# Tests, test tooling and their output
 test/**
-node_modules/**
+test-results/**
+coverage/**
+.vscode-test/**
+
+# Build and maintenance tooling
+scripts/**
 rollup.config.js
+eslint.config.mjs
+vitest.config.mjs
+.vscode-test.mjs
+jsconfig.json
+.tool-versions
+package-lock.json
+
+# Dependencies are bundled by rollup, so they must not ship as loose files
+node_modules/**
+
+# Build inputs that are bundled into out/extension-common.js
+extension-common.js
+
+# Vendored/duplicated sources that the build does not consume directly
 uuid-org.js
 uuid.js
-extension-common.js
+
+# Note: `out/**` is deliberately NOT ignored - it is the web extension entry
+# point declared by the "browser" field in package.json.

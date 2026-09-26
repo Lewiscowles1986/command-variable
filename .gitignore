@@ -1,4 +1,22 @@
-node_modules
-package-lock.json
-out
-test
+# Build output (produced by rollup into out/)
+out/
+
+# Dependencies are reinstalled from the committed lockfile
+node_modules/
+
+# Test and coverage artefacts
+coverage/
+test-results/
+.vscode-test/
+
+# Packaged extension
+dist/
+*.vsix
+
+# Editor / OS noise
+.DS_Store
+*.log
+
+# NOTE: package-lock.json and test/ are intentionally NOT ignored.
+# The lockfile is what makes builds reproducible, and the test suite is part of
+# the source of truth for this repository.
