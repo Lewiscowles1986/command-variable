@@ -38,15 +38,11 @@
  * this script exits non-zero and prints a REGRESSION: line and a per-section
  * breakdown, so the known overage is the worklist and a genuinely new problem
  * is distinguishable from it (plan section 8.1). The moment the README is
- * under the cap the script exits zero. While over the cap, a growth against
- * the recorded baseline (scripts/docs-budget-baseline.json) is reported with
- * its own REGRESSION: line.
+ * under the cap the script exits zero.
  *
  * Usage:
  *   node scripts/check-docs-budget.js                   check; non-zero on failure
  *   node scripts/check-docs-budget.js --report          print the table; always exit 0
- *   node scripts/check-docs-budget.js --update-baseline record the current README
- *                                                       figure as the baseline; exit 0
  *
  * Run via `npm run check:docs-budget` (or as part of `npm run check:docs`).
  */
@@ -57,7 +53,6 @@ const path = require('node:path');
 const repoRoot = path.resolve(__dirname, '..');
 const DOCS_ROOT = path.join(repoRoot, 'docs', 'diataxis-docs');
 const README_PATH = path.join(repoRoot, 'README.md');
-const BASELINE_PATH = path.join(__dirname, 'docs-budget-baseline.json');
 
 const WORDS_PER_MINUTE = 220;
 const CODE_LINES_PER_MINUTE = 30;
@@ -76,7 +71,6 @@ const AUDIENCES = ['extension-user', 'extension-author', 'shared'];
 const DIATAXIS_TYPES = ['tutorial', 'how-to', 'reference', 'explanation', 'index'];
 
 const report = process.argv.includes('--report');
-const updateBaseline = process.argv.includes('--update-baseline');
 
 const problems = [];
 const warnings = [];
@@ -359,17 +353,10 @@ function analyseReadme() {
   pages.push({ rel, equivalents, band, declared: '(none - landing page)', computedMinutes: suggestedMinutes(equivalents) });
 
   const overCap = equivalents > HARD_CAP;
-  const baseline = fs.existsSync(BASELINE_PATH)
-    ? JSON.parse(fs.readFileSync(BASELINE_PATH, 'utf8'))
-    : null;
-  const baselineFigure = baseline ? baseline['README.md'] : null;
 
   if (overCap) {
     console.log(`REGRESSION: README.md is over the reading-time hard cap: ${equivalents} equivalents (~${(equivalents / WORDS_PER_MINUTE).toFixed(1)} min) > ${HARD_CAP}.`);
     console.log('REGRESSION: this is the known worklist - extract sections into docs/diataxis-docs/ until the cap is met (plan section 8.1). It is not a new failure by itself; growth is.');
-    if (baselineFigure !== null && equivalents > baselineFigure) {
-      console.log(`REGRESSION: README.md grew from ${baselineFigure} to ${equivalents} equivalents. The latest edit made the README longer instead of extracting from it.`);
-    }
     console.log('');
     console.log('Per-section breakdown (the extraction worklist):');
     for (const section of readmeSections(content)) {
@@ -378,9 +365,6 @@ function analyseReadme() {
       console.log(`  ${String(sectionEquivalents).padStart(6)}  ${section.title}${marker}`);
     }
     problems.push(`${rel}: over the reading-time hard cap (${equivalents} equivalents > ${HARD_CAP}). See the REGRESSION: lines above; fix by extracting sections into docs/diataxis-docs/, not by trimming content silently.`);
-  } else if (baselineFigure !== null && equivalents > baselineFigure) {
-    // Under the cap the red-as-step loop is closed; growth is no longer a failure.
-    warnings.push(`${rel} is under the cap but grew from ${baselineFigure} to ${equivalents} equivalents since the baseline was recorded.`);
   }
 
   return equivalents;
@@ -456,15 +440,6 @@ function main() {
   }
   for (const warning of warnings) {
     console.warn(`NOTE: ${warning}`);
-  }
-
-  if (updateBaseline && !report) {
-    const readme = pages.find((p) => p.rel === 'README.md');
-    if (readme) {
-      fs.writeFileSync(BASELINE_PATH, `${JSON.stringify({ 'README.md': readme.equivalents }, null, 2)}\n`);
-      console.log(`baseline written: scripts/docs-budget-baseline.json (README.md = ${readme.equivalents} equivalents)`);
-    }
-    return problems.length > 0 ? 1 : 0;
   }
 
   printTable();
