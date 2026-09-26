@@ -5,11 +5,33 @@
   "publisher": "rioj7",
   "license": "MIT",
   "version": "1.71.0",
-  "engines": {"vscode": "^1.55.0"},
-  "categories": ["Other"],
-  "keywords": ["command","variable","launch","tasks","date","multi-root ready","pick","file","key","value","uuid","clipboard","number","remember"],
+  "engines": {
+    "vscode": "^1.55.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "command",
+    "variable",
+    "launch",
+    "tasks",
+    "date",
+    "multi-root ready",
+    "pick",
+    "file",
+    "key",
+    "value",
+    "uuid",
+    "clipboard",
+    "number",
+    "remember"
+  ],
   "icon": "images/icon.png",
-  "galleryBanner": {"color": "#000080", "theme": "dark"},
+  "galleryBanner": {
+    "color": "#000080",
+    "theme": "dark"
+  },
   "activationEvents": [
     "onCommand:extension.commandvariable.file.relativeDirDots",
     "onCommand:extension.commandvariable.file.relativeFileDots",
@@ -128,6 +150,10 @@
   },
   "main": "./extension.js",
   "browser": "./out/extension-common.js",
+  "vendored": {
+    "yaml": "2.1.3",
+    "_comment": "yaml.js is a rolled-up copy of this package. It is not a declared dependency, so Dependabot cannot track it. Update both together."
+  },
   "homepage": "https://github.com/rioj7/command-variable",
   "bugs": {
     "url": "https://github.com/rioj7/command-variable/issues"
@@ -137,17 +163,35 @@
     "url": "https://github.com/rioj7/command-variable.git"
   },
   "scripts": {
+    "postinstall": "node scripts/install-vscode-stub.js",
+    "vscode:stub": "node scripts/install-vscode-stub.js",
     "build": "rollup -c --environment BUILD:production",
-    "dev": "rollup -c --environment BUILD:development"
+    "dev": "rollup -c --environment BUILD:development",
+    "watch": "rollup -c -w --environment BUILD:development",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test:unit": "node scripts/install-vscode-stub.js && vitest run",
+    "test:coverage": "node scripts/install-vscode-stub.js && vitest run --coverage",
+    "test:integration": "node scripts/build-and-test-integration.js",
+    "check:bundle": "node scripts/check-bundle.js",
+    "check:audit": "npm audit --omit=dev --audit-level=moderate",
+    "verify": "npm run lint && npm run test:coverage && npm run dev && npm run check:bundle && npm run check:audit",
+    "test": "npm run verify",
+    "package": "npm run build && node scripts/package.js"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "^15.3.0",
-    "@types/assert": "^1.5.11",
-    "@types/mocha": "^10.0.10",
-    "glob": "^11.0.0",
-    "mocha": "^11.0.1",
+    "@types/node": "^22.20.4",
+    "@types/vscode": "~1.55.0",
+    "@vitest/coverage-v8": "^5.0.2",
+    "@vscode/test-cli": "^0.0.15",
+    "@vscode/test-electron": "^3.1.0",
+    "@vscode/vsce": "^4.0.0",
+    "eslint": "^10.11.0",
+    "globals": "^17.12.0",
     "rollup": "^2.79.2",
-    "simple-mock": "^0.8.0"
+    "vitest": "^5.0.2"
   }
 }

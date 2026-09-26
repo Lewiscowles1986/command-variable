@@ -1,0 +1,40 @@
+{
+  "name": "command-variable",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "VARIANT": "22-bookworm"
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "configureZshAsDefaultShell": false
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "ms-vscode.extension-test-runner",
+        "vitest.explorer"
+      ],
+      "settings": {
+        "files.eol": "\n",
+        "editor.formatOnSave": false,
+        "npm.packageManager": "npm",
+        "typescript.tsdk": "node_modules/typescript/lib"
+      }
+    }
+  },
+  "remoteUser": "node",
+  "containerEnv": {
+    "ELECTRON_DISABLE_SANDBOX": "1",
+    "DONT_PROMPT_WSL_INSTALL": "1"
+  },
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "4gb"
+  }
+}

@@ -1,5 +1,19 @@
 # Change Log
 
+## [Unreleased]
+### Added
+- Automated test suite: unit tests with coverage gates, plus integration tests that activate the extension in a real VS Code Extension Host
+- CI pipeline: lint, unit tests, coverage, bundle safety check, dependency audit, packaging, and integration tests on Linux, macOS and Windows
+- Dependabot updates for npm dependencies and GitHub Actions
+- Dev container providing an isolated build and test environment
+- `CONTRIBUTING.md` describing the local workflow, test strategy and maintenance guardrails
+- Post-build bundle check that verifies the web entry point requires only `vscode` and stays within a size budget
+### Fixed
+- `utils.getProperty` used `obj.hasOwnProperty`, which threw or misreported for objects created with `Object.create(null)` or objects shadowing that method
+### Changed
+- Test code, tooling and the lockfile are no longer ignored by git, so the test suite and reproducible installs travel with the repository
+- Unused development dependencies (`mocha`, `simple-mock`, `glob`, `@types/mocha`, `@types/assert`) removed; `@vscode/test-cli` provides its own test runner
+
 ## [1.71.0] 2026-05-30
 ### Added
 - `pickStringRemember`: json templates (options, optionGroups) can contain variables

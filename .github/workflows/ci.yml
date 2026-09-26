@@ -1,0 +1,159 @@
+name: CI
+
+# Trigger policy
+# ==============
+# Two independent events can fire for one commit on a pull request: `push` (the
+# branch moved) and `pull_request` (the PR was opened or updated). Without
+# guarding `push`, every commit costs two identical runs.
+#
+# The guard is "only run `push` for the default branch". PRs from branches are
+# covered by the `pull_request` event instead, so no commit is left untested and
+# none is tested twice.
+#
+# Why not use `pull_request: types: [opened, reopened]` plus `push`?
+#   That skips `synchronize`, so pushes to an existing PR would never be tested.
+# Why not trigger on `pull_request_target`?
+#   It runs with a write-capable token and secrets even for fork PRs. That is
+#   dangerous when the job checks out and executes PR code, so it is deliberately
+#   avoided here. `pull_request` runs with a read-only token and no secrets,
+#   which is what this repository wants.
+on:
+  push:
+    # Default branch only: this is what makes the two runs per commit collapse
+    # into one. `gh api repos/{owner}/{repo} --jq .default_branch` is the source
+    # of truth if this is ever renamed.
+    branches: [main]
+  pull_request:
+    # Explicitly not using `pull_request_target`. See the note above.
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+
+# One run per ref per workflow. `cancel-in-progress` is false on the default
+# branch so a release-worthy build always finishes, and true elsewhere so a
+# superseded PR push does not queue behind a stale run.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+# Least privilege: read-only by default for the whole workflow. Jobs that need
+# more must ask for it explicitly, so a compromised step cannot silently gain
+# write access.
+permissions:
+  contents: read
+
+jobs:
+  # Fast feedback: lint, unit tests with coverage, build and bundle safety.
+  verify:
+    name: Lint, unit tests and bundle check
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          # Reads the pinned version from .tool-versions (asdf format).
+          node-version-file: .tool-versions
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit tests with coverage
+        run: npm run test:coverage
+
+      - name: Build (development bundle)
+        run: npm run dev
+
+      - name: Bundle safety check
+        run: npm run check:bundle
+
+      - name: Verify no shipped dependency vulnerabilities
+        run: npm run check:audit
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: coverage
+          path: |
+            coverage/
+            test-results/
+          if-no-files-found: ignore
+          retention-days: 7
+
+  # Slower, and the only job that proves the extension works in a real host.
+  integration:
+    name: Integration tests (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .tool-versions
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build extension
+        run: npm run dev
+
+      - name: Run integration tests (Linux, headless)
+        if: runner.os == 'Linux'
+        run: xvfb-run -a npm run test:integration
+
+      - name: Run integration tests (macOS / Windows)
+        if: runner.os != 'Linux'
+        run: npm run test:integration
+
+      - name: Upload integration coverage
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: integration-coverage-${{ matrix.os }}
+          path: coverage/integration/
+          if-no-files-found: ignore
+          retention-days: 7
+
+  # Proves the exact artefact users would install can be produced.
+  package:
+    name: Package VSIX
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: [verify]
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .tool-versions
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build production bundle
+        run: npm run build
+
+      - name: Check packaged contents
+        run: npx @vscode/vsce ls
+
+      - name: Package
+        run: npm run package
+
+      - name: Upload VSIX
+        uses: actions/upload-artifact@v6
+        with:
+          name: command-variable-vsix
+          path: dist/*.vsix
+          retention-days: 14
