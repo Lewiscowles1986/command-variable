@@ -28,6 +28,13 @@ const vsceBin = path.join(
 
 const args = ['package', '--out', outFile];
 
+// Relative links in README.md render unreliably on the Marketplace unless the
+// base URL is pinned; with it, docs/... links resolve to the repository page.
+if (manifest.repository && manifest.repository.url) {
+  const repoUrl = manifest.repository.url.replace(/\.git$/, '');
+  args.push('--baseContentUrl', repoUrl);
+}
+
 const result = spawnSync(vsceBin, args, {
   cwd: repoRoot,
   stdio: 'inherit',

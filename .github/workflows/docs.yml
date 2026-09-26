@@ -1,0 +1,48 @@
+name: Docs
+
+# Docs checks run separately from CI (see plan section 8.2):
+#
+# - `on: push` with NO branch filter: every push, on every branch. The docs
+#   tree can be red on a branch without blocking the PR pipeline, and the
+#   push trigger is what makes the over-cap README visible as the worklist
+#   it is designed to be.
+# - NOT triggered by pull_request: a red docs check must never block `package`.
+#   A misfiled page is caught after the push lands; this is accepted.
+# - Its own concurrency group, so docs runs never cancel or queue behind CI.
+#
+# `npm run check:docs` never gates packaging or the VSIX artifact.
+
+on:
+  push: {}
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+permissions:
+  contents: read
+
+jobs:
+  check-docs:
+    name: Documentation checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .tool-versions
+          cache: npm
+
+      # The docs checks read only markdown, so a full `npm ci` is unnecessary.
+      - name: Documentation checks
+        run: |
+          node scripts/check-docs-budget.js
+          node scripts/check-docs-placement.js
+          node scripts/check-docs-links.js
+
+      # The budget check writes the per-page table when GITHUB_STEP_SUMMARY is
+      # set, so every page's computed figure, band and gap to the cap appear
+      # on the run summary.
