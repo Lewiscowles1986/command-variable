@@ -175,6 +175,11 @@
     "test:integration": "node scripts/build-and-test-integration.js",
     "check:bundle": "node scripts/check-bundle.js",
     "check:audit": "npm audit --omit=dev --audit-level=moderate",
+    "check:docs-budget": "node scripts/check-docs-budget.js",
+    "check:docs-placement": "node scripts/check-docs-placement.js",
+    "check:docs-links": "node scripts/check-docs-links.js",
+    "check:docs-softwrap": "node scripts/check-docs-softwrap.js",
+    "check:docs": "npm run check:docs-budget && npm run check:docs-placement && npm run check:docs-links && npm run check:docs-softwrap",
     "verify": "npm run lint && npm run test:coverage && npm run dev && npm run check:bundle && npm run check:audit",
     "test": "npm run verify",
     "package": "npm run build && node scripts/package.js"

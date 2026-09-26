@@ -14,6 +14,7 @@
 - Test code, tooling and the lockfile are no longer ignored by git, so the test suite and reproducible installs travel with the repository
 - Unused development dependencies (`mocha`, `simple-mock`, `glob`, `@types/mocha`, `@types/assert`) removed; `@vscode/test-cli` provides its own test runner
 - `engines.vscode` raised to `^1.138.0` to stay aligned with the bumped `@types/vscode` range (both move together; `vsce` rejects a types version newer than the declared engine)
+- Documentation reorganised into `docs/diataxis-docs/` (Diátaxis: tutorials, how-to guides, reference, explanation), split by audience (`extension-user` / `extension-author`). `README.md` is now a landing page with a "where did it go" mapping table; `CONTRIBUTING.md` points into the `extension-author` tree. Documentation is not shipped in the `.vsix`. Three docs checks (`check:docs-budget`, `check:docs-placement`, `check:docs-links`) run on every push in a separate workflow.
 
 ## [1.71.0] 2026-05-30
 ### Added
